@@ -1,6 +1,6 @@
 {
   "name": "@outloud/css",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "author": "Outloud <hello@outloud.co> (https://outloud.co)",
   "contributors": [
     "Andrej Adamcik <andrej@outloud.co>"
@@ -64,8 +64,7 @@
   "dependencies": {
     "@unocss/preset-mini": "^0.53.3"
   },
-  "private": true,
   "publishConfig": {
-    "@outloud:registry": "https://git.outloud.dev"
+    "@outloud:registry": "https://git.outloud.dev/api/v4/projects/228/packages/npm/"
   }
 }

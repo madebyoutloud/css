@@ -7,4 +7,4 @@ library:
     include: .gitlab/library.yml
     strategy: depend
   rules:
-    - if: $CI_COMMIT_TAG =~ /^v\@.*$/
+    - if: $CI_COMMIT_TAG =~ /^v([0-9.]+)$/
