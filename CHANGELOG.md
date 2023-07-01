@@ -1,5 +1,7 @@
 
 
+## [1.0.1](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.0...v1.0.1) (2023-07-01)
+
 # 1.0.0 (2023-07-01)
 
 
