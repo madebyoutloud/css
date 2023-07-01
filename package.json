@@ -64,7 +64,8 @@
   "dependencies": {
     "@unocss/preset-mini": "^0.53.3"
   },
+  "private": true,
   "publishConfig": {
-    "@outloud:registry": "https://git.outloud.dev/api/v4/projects/228/packages/npm/"
+    "@outloud:registry": "https://git.outloud.dev"
   }
 }

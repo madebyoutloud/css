@@ -1,0 +1,20 @@
+{
+  "gitlab": {
+    "release": false,
+    "releaseName": "v${version}"
+  },
+  "git": {
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": false
+  },
+  "npm": {
+    "publish": true
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": true
+    }
+  }
+}
