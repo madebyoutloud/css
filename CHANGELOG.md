@@ -1,5 +1,12 @@
 
 
+## [1.0.3](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.2...v1.0.3) (2023-07-02)
+
+
+### Bug Fixes
+
+* flex ([2811a19](https://git.outloud.dev/outloud/libraries/css/commits/2811a19949cf7a5afc27c4201a99683b911bfff0))
+
 ## [1.0.2](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.1...v1.0.2) (2023-07-02)
 
 
