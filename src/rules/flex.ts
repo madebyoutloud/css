@@ -10,12 +10,17 @@ export const flex: Rule[] = [
 ]
 
 export const flexDirections: Rule[] = [
-  'row', 'row-reverse', 'col', 'col-reverse',
-].map(v => [`flex-${v}`, { 'flex-direction': v }])
+  ['row', { 'flex-direction': 'row' }],
+  ['row-reverse', { 'flex-direction': 'row-reverse' }],
+  ['col', { 'flex-direction': 'column' }],
+  ['col-reverse', { 'flex-direction': 'column-reverse' }],
+]
 
 export const flexWraps: Rule[] = [
-  'wrap', 'wrap-reverse', 'nowrap',
-].map(v => [`flex-${v}`, { 'flex-wrap': v }])
+  ['wrap', { 'flex-wrap': 'wrap' }],
+  ['wrap-reverse', { 'flex-wrap': 'wrap-reverse' }],
+  ['nowrap', { 'flex-wrap': 'nowrap' }],
+]
 
 export const flexGrows: Rule[] = [
   ['grow', { 'flex-grow': '1' }],
