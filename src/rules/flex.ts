@@ -10,16 +10,16 @@ export const flex: Rule[] = [
 ]
 
 export const flexDirections: Rule[] = [
-  ['row', { 'flex-direction': 'row' }],
-  ['row-reverse', { 'flex-direction': 'row-reverse' }],
-  ['col', { 'flex-direction': 'column' }],
-  ['col-reverse', { 'flex-direction': 'column-reverse' }],
+  ['flex-row', { 'flex-direction': 'row' }],
+  ['flex-row-reverse', { 'flex-direction': 'row-reverse' }],
+  ['flex-col', { 'flex-direction': 'column' }],
+  ['flex-col-reverse', { 'flex-direction': 'column-reverse' }],
 ]
 
 export const flexWraps: Rule[] = [
-  ['wrap', { 'flex-wrap': 'wrap' }],
-  ['wrap-reverse', { 'flex-wrap': 'wrap-reverse' }],
-  ['nowrap', { 'flex-wrap': 'nowrap' }],
+  ['flex-wrap', { 'flex-wrap': 'wrap' }],
+  ['flex-wrap-reverse', { 'flex-wrap': 'wrap-reverse' }],
+  ['flex-nowrap', { 'flex-wrap': 'nowrap' }],
 ]
 
 export const flexGrows: Rule[] = [
