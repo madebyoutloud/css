@@ -13,7 +13,7 @@ export interface OutloudOptions {
 }
 
 export function presetOutloud(options: OutloudOptions = {}): Preset<Theme> {
-  options.separators = options.separators ?? ['@']
+  options.separators = options.separators ?? [':']
 
   return {
     name: 'unocss-preset-outloud',

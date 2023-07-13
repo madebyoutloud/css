@@ -11,8 +11,6 @@ export function calcMaxWidthBySize(size: string) {
 
 export function variantBreakpoints(options: OutloudOptions): VariantObject<Theme> {
   const regexCache: Record<string, RegExp> = {}
-  const separators = options.separators!.join('|')
-
   return {
     name: 'breakpoints',
     match(matcher, context) {
@@ -20,23 +18,23 @@ export function variantBreakpoints(options: OutloudOptions): VariantObject<Theme
       = Object.entries(context.theme.breakpoints ?? {}).map(([point, size], idx) => [point, size, idx])
       for (const [point, size, idx] of variantEntries) {
         if (!regexCache[point])
-          regexCache[point] = new RegExp(`((?:${separators})${point}(?:-(down|only))?)$`)
+          regexCache[point] = new RegExp(`^((?:([al]t-|[<~]))?${point}(?:${options.separators!.join('|')}))`)
 
         const match = matcher.match(regexCache[point])
         if (!match)
           continue
 
-        const [, post] = match
+        const [, pre] = match
 
-        const m = matcher.slice(0, matcher.length - post.length)
+        const m = matcher.slice(pre.length)
         // container rule is responsive, but also is breakpoint aware
         // it is handled on its own module (container.ts) and so we
         // exclude it from here
         if (m === 'container')
           continue
 
-        const isLtPrefix = post.endsWith('-down')
-        const isAtPrefix = post.endsWith('-only')
+        const isLtPrefix = pre.startsWith('lt-') || pre.startsWith('<')
+        const isAtPrefix = pre.startsWith('at-') || pre.startsWith('~')
 
         let order = 1000 // parseInt(size)
 
@@ -77,6 +75,6 @@ export function variantBreakpoints(options: OutloudOptions): VariantObject<Theme
       }
     },
     multiPass: true,
-    autocomplete: '@$breakpoints(-down|-only|)',
+    autocomplete: '(at-|lt-|)$breakpoints:',
   }
 }

@@ -5,6 +5,5 @@ import { variantBreakpoints } from './breakpoints'
 export function variants(options: OutloudOptions): Variant[] {
   return [
     variantBreakpoints(options),
-
   ]
 }

@@ -13,6 +13,7 @@ export const directionMap: Record<string, string[]> = {
 export const gapMap: Record<string, string[]> = {
   'x': ['column-'],
   'y': ['row-'],
+  'col': ['--'],
   '': [''],
 }
 
