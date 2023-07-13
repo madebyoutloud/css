@@ -4,5 +4,10 @@ import { presetOutloud } from '@outloud/css'
 
 export default defineConfig<Theme>({
   presets: [presetOutloud()],
-  theme: {},
+  theme: {
+    colors: {
+      black: '#000',
+      white: '#fff',
+    },
+  },
 })

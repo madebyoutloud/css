@@ -4,7 +4,7 @@ import type { Theme } from '../theme'
 import { convertSize } from '../utils/helpers'
 
 export const gridSystem: Rule<Theme>[] = [
-  [/^columns$/, (_, { theme }) => ({ 'display': 'flex', 'flex-flow': 'row wrap', 'gap': convertSize(theme.grid?.gap ?? 0, theme) })],
+  [/^columns$/, (_, { theme }) => ({ 'display': 'flex', 'flex-flow': 'row wrap', '--gap': convertSize(theme.grid?.gap ?? 0, theme), 'gap': 'var(--gap)' })],
   ['col', { 'flex': '1 0 0%', 'width': '100%', 'max-width': '100%' }],
   ['col-auto', { flex: '0 0 auto', width: 'auto' }],
   [/^col-(\d+)$/, ([_, v], { theme }) => {
@@ -15,7 +15,7 @@ export const gridSystem: Rule<Theme>[] = [
     if (columns <= totalColumns) {
       return {
         flex: '0 0 auto',
-        width: `${columns / totalColumns * 100}%`,
+        width: `calc(${columns / totalColumns * 100}% - var(--gap) / ${totalColumns / (totalColumns - columns)})`,
       }
     }
   }],
