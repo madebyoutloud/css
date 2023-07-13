@@ -1,5 +1,12 @@
 
 
+## [1.0.5](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.4...v1.0.5) (2023-07-13)
+
+
+### Features
+
+* update grid ([ba6b971](https://git.outloud.dev/outloud/libraries/css/commits/ba6b97119ed62ed215bdc2e7251db7d2660b208b))
+
 ## [1.0.4](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.3...v1.0.4) (2023-07-13)
 
 
