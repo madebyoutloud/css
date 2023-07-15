@@ -24,7 +24,8 @@ export const breakpoints = {
 
 export const verticalBreakpoints = { ...breakpoints } satisfies Theme['breakpoints']
 
-const spacers = [2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96]
+const spacing = [0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96]
+const zIndex = [0, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500]
 
 export const containers = Object.fromEntries(Object.entries(baseSize).map(([k, v]) => [k, `(min-width: ${v})`])) satisfies Theme['containers']
 
@@ -32,7 +33,9 @@ export const theme: Theme = {
   baseFontSize: 16,
   unit: 'rem',
 
-  spacers,
+  spacing,
+
+  zIndex,
 
   grid: {
     columns: 12,
@@ -60,7 +63,10 @@ export interface Theme {
    * @default 16
    */
   baseFontSize?: number
-  spacers?: number[]
+  spacing?: number[]
+
+  zIndex?: number[]
+
   colors?: Record<string, string>
 
   grid?: {

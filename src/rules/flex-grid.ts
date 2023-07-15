@@ -1,7 +1,51 @@
-import type { Rule, StaticRule } from '@unocss/core'
-import { makeGlobalStaticRules } from '../utils/helpers'
+import type { CSSEntries, Rule, RuleContext, StaticRule } from '@unocss/core'
+import { convertSize, makeGlobalStaticRules } from '../utils/helpers'
+import type { Theme } from '../theme'
+import { gapMap } from '../utils/mappings'
 
-export const justifies: StaticRule[] = [
+export const flex: Rule[] = [
+  ['flex-1', { flex: '1 1 0%' }],
+  ['flex-auto', { flex: '1 1 auto' }],
+  ['flex-initial', { flex: '0 1 auto' }],
+  ['flex-content', { flex: '0 0 auto' }],
+  ['flex-fill', { flex: '1 0 auto' }],
+  ['flex-none', { flex: 'none' }],
+]
+
+export const flexDirection: Rule[] = [
+  ['flex-row', { 'flex-direction': 'row' }],
+  ['flex-row-reverse', { 'flex-direction': 'row-reverse' }],
+  ['flex-col', { 'flex-direction': 'column' }],
+  ['flex-col-reverse', { 'flex-direction': 'column-reverse' }],
+]
+
+export const flexWrap: Rule[] = [
+  ['flex-wrap', { 'flex-wrap': 'wrap' }],
+  ['flex-wrap-reverse', { 'flex-wrap': 'wrap-reverse' }],
+  ['flex-nowrap', { 'flex-wrap': 'nowrap' }],
+]
+
+export const flexGrow: Rule[] = [
+  ['grow', { 'flex-grow': '1' }],
+  ['grow-0', { 'flex-grow': '0' }],
+]
+
+export const flexShrink: Rule[] = [
+  ['shrink', { 'flex-shrink': '1' }],
+  ['shrink-0', { 'flex-shrink': '0' }],
+]
+
+export const gap: Rule[] = [
+  [/^gap()-(\d+)$/, handleGap, { autocomplete: ['gap-<num>'] }],
+  [/^gap-([xy])-(\d+)$/, handleGap, { autocomplete: ['gap-(x|y)-<num>'] }],
+]
+
+function handleGap([_, direction, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {
+  if (theme.spacing?.includes(Number(v)))
+    return gapMap[direction].map(i => [`${i}gap`, convertSize(v, theme)])
+}
+
+export const justify: StaticRule[] = [
   // contents
   ['justify-start', { 'justify-content': 'flex-start' }],
   ['justify-end', { 'justify-content': 'flex-end' }],
@@ -28,13 +72,13 @@ export const justifies: StaticRule[] = [
   ...makeGlobalStaticRules('justify-self'),
 ]
 
-export const orders: Rule[] = [
+export const order: Rule[] = [
   ['order-first', { order: '-9999' }],
   ['order-last', { order: '9999' }],
   ['order-none', { order: '0' }],
 ]
 
-export const alignments: StaticRule[] = [
+export const alignment: StaticRule[] = [
   ['flex-center', { 'align-items': 'center', 'justify-content': 'center' }],
 
   // contents
@@ -64,7 +108,7 @@ export const alignments: StaticRule[] = [
   ...makeGlobalStaticRules('self', 'align-self'),
 ]
 
-export const placements: Rule[] = [
+export const placement: Rule[] = [
   // contents
   ['place-content-center', { 'place-content': 'center' }],
   ['place-content-start', { 'place-content': 'start' }],

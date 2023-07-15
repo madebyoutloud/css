@@ -2,16 +2,19 @@ import type { StaticRule } from '@unocss/core'
 import type { Theme } from '../theme'
 import { globalKeywords } from './mappings'
 
-export function convertSize(value: string | number, theme: Theme) {
+export function convertSize(value: string | number, theme: Theme, forcePx = false) {
   if (value === 'auto')
     return value
 
+  if (value === 'full')
+    value = 9999
+
   const numberValue = Number(value)
 
-  if (theme.unit === 'rem')
+  if (theme.unit === 'rem' && !forcePx)
     return `${numberValue / (theme.baseFontSize ?? 16)}rem`
 
-  return `${numberValue}${theme.unit ?? ''}`
+  return `${numberValue}${forcePx ? 'px' : theme.unit ?? ''}`
 }
 
 export function makeGlobalStaticRules(prefix: string, property?: string): StaticRule[] {
