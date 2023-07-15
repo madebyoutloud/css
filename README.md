@@ -1,1 +1,1 @@
-# @outloud/css
+# CSS preset for UnoCSS by Outloud

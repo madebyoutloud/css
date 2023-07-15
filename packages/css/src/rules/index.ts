@@ -3,10 +3,12 @@ import { margin, padding } from './spacing'
 import { borderColor, borderRadius, borderWidth } from './border'
 import { backgroundColor } from './background'
 import { aspectRatio, display, inset, isolation, objectFit, overflow, position, visibility, zIndex } from './layout'
-import { alignment, flex, flexDirection, flexGrow, flexShrink, flexWrap, gap, justify, order, placement } from './flex-grid'
-import { gridSystem } from './grid-system'
+import { flex, flexDirection, flexGrow, flexShrink, flexWrap } from './flex'
 import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
 import { fontSize, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign } from './typography'
+import { gap } from './gap'
+import { alignment, justify, order, placement } from './position'
+import { grid } from './grid'
 
 export const rules: Rule[] = [
   // layout
@@ -20,22 +22,24 @@ export const rules: Rule[] = [
   visibility,
   zIndex,
 
-  // flex / grid
+  // flex
   flex,
   flexDirection,
   flexWrap,
   flexGrow,
   flexShrink,
 
+  // grid
+  grid,
+
+  // gap
   gap,
 
+  // position
   justify,
   order,
   alignment,
   placement,
-
-  // grid system
-  gridSystem,
 
   // spacing
   margin,

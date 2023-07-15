@@ -1,0 +1,55 @@
+{
+  "name": "@outloud/css",
+  "version": "1.0.5",
+  "author": "Outloud <hello@outloud.co> (https://outloud.co)",
+  "contributors": [
+    "Andrej Adamcik <andrej@outloud.co>"
+  ],
+  "description": "CSS preset for UnoCSS by Outloud.",
+  "keywords": [
+    "unocss",
+    "outloud",
+    "css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./dist/*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "prepack": "pnpm build",
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "play": "pnpm --filter ./playground run dev",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "release": "pnpm prepack && release-it",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@unocss/core": ">= 0.52.0"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^5.1.1",
+    "@unocss/core": "^0.53.5",
+    "bumpp": "^9.1.1",
+    "release-it": "^15.11.0",
+    "sass": "^1.63.6",
+    "unbuild": "^1.2.1"
+  },
+  "publishConfig": {
+    "@outloud:registry": "https://git.outloud.dev/api/v4/projects/228/packages/npm/"
+  }
+}
