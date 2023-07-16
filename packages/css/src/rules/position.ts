@@ -1,8 +1,7 @@
 import type { Rule, StaticRule } from '@unocss/core'
 import { makeGlobalStaticRules } from '../utils/helpers'
 
-export const justify: StaticRule[] = [
-  // contents
+export const justifyContent: StaticRule[] = [
   ['justify-start', { 'justify-content': 'flex-start' }],
   ['justify-end', { 'justify-content': 'flex-end' }],
   ['justify-center', { 'justify-content': 'center' }],
@@ -11,15 +10,17 @@ export const justify: StaticRule[] = [
   ['justify-evenly', { 'justify-content': 'space-evenly' }],
   ['justify-stretch', { 'justify-content': 'stretch' }],
   ...makeGlobalStaticRules('justify', 'justify-content'),
+]
 
-  // items
+export const justifyItems: StaticRule[] = [
   ['justify-items-start', { 'justify-items': 'start' }],
   ['justify-items-end', { 'justify-items': 'end' }],
   ['justify-items-center', { 'justify-items': 'center' }],
   ['justify-items-stretch', { 'justify-items': 'stretch' }],
   ...makeGlobalStaticRules('justify-items'),
+]
 
-  // selfs
+export const justifySelf: StaticRule[] = [
   ['justify-self-auto', { 'justify-self': 'auto' }],
   ['justify-self-start', { 'justify-self': 'start' }],
   ['justify-self-end', { 'justify-self': 'end' }],
@@ -34,9 +35,7 @@ export const order: Rule[] = [
   ['order-none', { order: '0' }],
 ]
 
-export const alignment: StaticRule[] = [
-  ['flex-center', { 'align-items': 'center', 'justify-content': 'center' }],
-
+export const alignContent: StaticRule[] = [
   // contents
   ['content-center', { 'align-content': 'center' }],
   ['content-start', { 'align-content': 'flex-start' }],
@@ -45,16 +44,18 @@ export const alignment: StaticRule[] = [
   ['content-around', { 'align-content': 'space-around' }],
   ['content-evenly', { 'align-content': 'space-evenly' }],
   ...makeGlobalStaticRules('content', 'align-content'),
+]
 
-  // items
+export const alignItems: StaticRule[] = [
   ['items-start', { 'align-items': 'flex-start' }],
   ['items-end', { 'align-items': 'flex-end' }],
   ['items-center', { 'align-items': 'center' }],
   ['items-baseline', { 'align-items': 'baseline' }],
   ['items-stretch', { 'align-items': 'stretch' }],
   ...makeGlobalStaticRules('items', 'align-items'),
+]
 
-  // selfs
+export const alignSelf: StaticRule[] = [
   ['self-auto', { 'align-self': 'auto' }],
   ['self-start', { 'align-self': 'flex-start' }],
   ['self-end', { 'align-self': 'flex-end' }],
@@ -64,7 +65,7 @@ export const alignment: StaticRule[] = [
   ...makeGlobalStaticRules('self', 'align-self'),
 ]
 
-export const placement: Rule[] = [
+export const placeContent: Rule[] = [
   // contents
   ['place-content-center', { 'place-content': 'center' }],
   ['place-content-start', { 'place-content': 'start' }],
@@ -74,15 +75,17 @@ export const placement: Rule[] = [
   ['place-content-evenly', { 'place-content': 'space-evenly' }],
   ['place-content-stretch', { 'place-content': 'stretch' }],
   ...makeGlobalStaticRules('place-content'),
+]
 
-  // items
+export const placeItems: Rule[] = [
   ['place-items-start', { 'place-items': 'start' }],
   ['place-items-end', { 'place-items': 'end' }],
   ['place-items-center', { 'place-items': 'center' }],
   ['place-items-stretch', { 'place-items': 'stretch' }],
   ...makeGlobalStaticRules('place-items'),
+]
 
-  // selfs
+export const placeSelf: Rule[] = [
   ['place-self-auto', { 'place-self': 'auto' }],
   ['place-self-start', { 'place-self': 'start' }],
   ['place-self-end', { 'place-self': 'end' }],

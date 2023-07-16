@@ -2,22 +2,17 @@ import { defineTheme } from 'pinceau'
 
 export default defineTheme({
   color: {
-    // primary: palette('#059669'),
-  },
-  typography: {
-    color: {
-      primary: {
-        50: { value: '#ecfdf5' },
-        100: { value: '#d1fae5' },
-        200: { value: '#a7f3d0' },
-        300: { value: '#6ee7b7' },
-        400: { value: '#34d399' },
-        500: { value: '#10b981' },
-        600: { value: '#059669' },
-        700: { value: '#047857' },
-        800: { value: '#065f46' },
-        900: { value: '#064e3b' },
-      },
+    primary: {
+      100: { value: '#f58f83' },
+      200: { value: '#f37d6e' },
+      300: { value: '#f16a59' },
+      400: { value: '#f05845' },
+      500: { value: '#EE4530' },
+      600: { value: '#d63e2b' },
+      700: { value: '#be3726' },
+      800: { value: '#a73022' },
+      900: { value: '#8f291d' },
     },
+    // primary: palette('#059669'),
   },
 })

@@ -7,7 +7,7 @@ import { flex, flexDirection, flexGrow, flexShrink, flexWrap } from './flex'
 import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
 import { fontSize, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign } from './typography'
 import { gap } from './gap'
-import { alignment, justify, order, placement } from './position'
+import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
 import { grid } from './grid'
 
 export const rules: Rule[] = [
@@ -36,10 +36,16 @@ export const rules: Rule[] = [
   gap,
 
   // position
-  justify,
+  justifyContent,
+  justifyItems,
+  justifySelf,
   order,
-  alignment,
-  placement,
+  alignContent,
+  alignItems,
+  alignSelf,
+  placeContent,
+  placeItems,
+  placeSelf,
 
   // spacing
   margin,

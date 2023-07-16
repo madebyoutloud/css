@@ -4,13 +4,13 @@ import { directionMap } from '../utils/mappings'
 import { convertSize } from '../utils/helpers'
 
 export const borderWidth: Rule<Theme>[] = [
-  [/^border()-(\d+)$/, handlerBorderWidth],
-  [/^border-([rltb])-(\d+)$/, handlerBorderWidth],
-  [/^border-([xy])-(\d+)$/, handlerBorderWidth],
+  [/^border-(\d+)$/, handlerBorderWidth, { autocomplete: 'border-<num>' }],
+  [/^border-([rltb])-(\d+)$/, handlerBorderWidth, { autocomplete: 'border-(r|l|t|b)-<num>' }],
+  [/^border-([xy])-(\d+)$/, handlerBorderWidth, { autocomplete: 'border-(x|y)-<num>' }],
 ]
 
 export const borderRadius: Rule[] = [
-  [/^rounded-(.+)$/, handlerBorderRadius],
+  [/^rounded-(.+)$/, handlerBorderRadius, { autocomplete: 'rounded-<num>' }],
 ]
 
 export const borderColor: Rule<Theme>[] = [
@@ -19,10 +19,15 @@ export const borderColor: Rule<Theme>[] = [
 
     if (colorValue)
       return { 'border-color': colorValue }
-  }],
+  }, { autocomplete: 'border-$colors' }],
 ]
 
 function handlerBorderWidth([, direction, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {
+  if (v === undefined) {
+    v = direction
+    direction = ''
+  }
+
   return directionMap[direction].map(i => [`border${i}-width`, convertSize(v, theme, true)])
 }
 

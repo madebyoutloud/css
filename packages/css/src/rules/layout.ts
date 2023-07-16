@@ -51,7 +51,7 @@ export const inset: Rule[] = [
   [/^inset-(.+)$/, ([, v], ctx) => ({ inset: handleInsetValue(v, ctx) }),
     { autocomplete: 'inset-$spacing' },
   ],
-  [/^inset-([xy])-(.+)$/, handleInsetValues, { autocomplete: 'inset-<directions>-$spacing' }],
+  [/^inset-([xy])-(.+)$/, handleInsetValues, { autocomplete: 'inset-(x|y)-$spacing' }],
   [/^(top|left|right|bottom)-(.+)$/, ([, d, v], ctx) => ({ [d]: handleInsetValue(v, ctx) }), { autocomplete: '(top|left|right|bottom)-$spacing' }],
 ]
 
@@ -65,7 +65,7 @@ export const zIndex: Rule[] = [
   [/^z-(\d+)$/, ([_, v], { theme }: RuleContext<Theme>) => {
     if (theme.zIndex?.includes(Number(v)))
       return { 'z-index': v }
-  }],
+  }, { autocomplete: 'z-$zIndex' }],
 ]
 
 function handleInsetValue(v: string, { theme }: RuleContext<Theme>): string | number | undefined {

@@ -7,6 +7,5 @@ export const backgroundColor: Rule<Theme>[] = [
 
     if (colorValue)
       return { 'background-color': colorValue }
-  }],
-
+  }, { autocomplete: 'bg-$colors' }],
 ]
