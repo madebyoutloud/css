@@ -70,8 +70,12 @@ export interface Theme {
    * @default 16
    */
   baseFontSize?: number
+
+  /** Spacing for m-{value} or p-{value} */
   spacing?: number[]
+  /** Font weight for fw-{value} */
   weight?: number[]
+  /** Z-Index for z-{value} */
   zIndex?: number[]
 
   colors?: Record<string, string>
