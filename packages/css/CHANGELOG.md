@@ -1,5 +1,12 @@
 
 
+## [1.0.7](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.6...v1.0.7) (2023-07-27)
+
+
+### Bug Fixes
+
+* order ([25e1133](https://git.outloud.dev/outloud/libraries/css/commits/25e1133ca9ef47676e12d82cf23c5416b7a95951))
+
 ## [1.0.6](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.5...v1.0.6) (2023-07-16)
 
 
