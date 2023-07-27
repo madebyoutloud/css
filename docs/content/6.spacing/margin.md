@@ -10,7 +10,7 @@ Utilities for controlling an element's margin.
 
 ## Basic usage
 
-Control the margin on one side of an element using the `m{t|r|b|l|x|y}-{$spacing}` utilities.
+Control the margin on one side of an element using the `m{t|r|b|l|x|y}-{$spacing}` utilities. All sides support `auto` value as well, e.g. `m-auto`.
 
 ## Customization
 

@@ -10,6 +10,7 @@ export const borderWidth: Rule<Theme>[] = [
 ]
 
 export const borderRadius: Rule[] = [
+  [/^rounded-full$/, handlerBorderRadius, { autocomplete: 'rounded-(full)' }],
   [/^rounded-(.+)$/, handlerBorderRadius, { autocomplete: 'rounded-<num>' }],
 ]
 
