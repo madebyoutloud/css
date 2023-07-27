@@ -9,6 +9,7 @@ import { fontSize, fontStyle, fontWeight, textAlign, textColor, textDecoration, 
 import { gap } from './gap'
 import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
 import { grid } from './grid'
+import { cursor, userSelect } from './interactivity'
 
 export const rules: Rule[] = [
   // layout
@@ -78,5 +79,9 @@ export const rules: Rule[] = [
   borderWidth,
   borderRadius,
   borderColor,
+
+  // interactivity
+  cursor,
+  userSelect,
 
 ].flat(1)
