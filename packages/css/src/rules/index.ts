@@ -5,7 +5,7 @@ import { backgroundColor } from './background'
 import { aspectRatio, display, inset, isolation, objectFit, overflow, position, visibility, zIndex } from './layout'
 import { flex, flexDirection, flexGrow, flexShrink, flexWrap } from './flex'
 import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
-import { fontSize, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign } from './typography'
+import { fontSize, fontStyle, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign, whitespace } from './typography'
 import { gap } from './gap'
 import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
 import { grid } from './grid'
@@ -61,6 +61,7 @@ export const rules: Rule[] = [
 
   // typography
   fontSize,
+  fontStyle,
   fontWeight,
   textAlign,
   verticalAlign,
@@ -68,6 +69,7 @@ export const rules: Rule[] = [
   textDecoration,
   textOverflow,
   textColor,
+  whitespace,
 
   // backgrounds
   backgroundColor,

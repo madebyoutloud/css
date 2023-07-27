@@ -27,7 +27,11 @@ const classNames = computed(() => {
     <ProseTbody>
       <ProseTr v-for="(item, i) in classNames" :key="i">
         <ProseTd>{{ item.name }}</ProseTd>
-        <ProseTd>{{ item.properties }}</ProseTd>
+        <ProseTd>
+          <div v-for="(prop, j) in item.properties" :key="j">
+            {{ prop }}
+          </div>
+        </ProseTd>
       </ProseTr>
     </ProseTbody>
   </ProseTable>

@@ -1,17 +1,21 @@
-import type { Rule } from '@unocss/core'
+import type { Rule, RuleContext } from '@unocss/core'
 import { convertSize } from '../utils/helpers'
 import type { Theme } from '../theme'
 
 export const fontSize: Rule[] = [
-  [/^fs-(\d+)$/, ([_, v], { theme }) => ({ 'font-size': convertSize(v, theme) })],
+  [/^fs-(\d+)$/, ([_, v], { theme }) => ({ 'font-size': convertSize(v, theme) }), { autocomplete: 'fs-<num>' }],
 ]
 
-const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900]
-export const fontWeight: Rule[] = [
-  [/^fw-(\d+)$/, ([_, v]) => {
-    if (weights.includes(Number(v)))
+export const fontStyle = [
+  ['italic', { 'font-style': 'italic' }],
+  ['not-italic', { 'font-style': 'normal' }],
+]
+
+export const fontWeight: Rule<Theme>[] = [
+  [/^fw-(\d+)$/, ([_, v], { theme }) => {
+    if (theme.weight?.includes(Number(v)))
       return { 'font-weight': v }
-  }],
+  }, { autocomplete: ['fw-$weight'] }],
 ]
 
 export const textAlign: Rule[] = ['center', 'left', 'right', 'justify', 'start', 'end'].map(v => [`text-${v}`, { 'text-align': v }])
@@ -38,11 +42,23 @@ export const textOverflow: Rule[] = [
   ['text-clip', { 'text-overflow': 'clip' }],
 ]
 
-export const textColor: Rule<Theme>[] = [
-  [/^text-(.+)$/, ([_, v], { theme }) => {
+export const textColor: Rule[] = [
+  [/^text-(.+)$/, ([_, v], { theme }: RuleContext<Theme>) => {
     const colorValue = theme.colors?.[v]
 
     if (colorValue)
       return { color: colorValue }
-  }],
+  }, { autocomplete: 'text-$colors' }],
+]
+
+const whitespaces = ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'break-spaces']
+export const whitespace: Rule[] = [
+  [
+    /^whitespace-([-\w]+)$/,
+    ([, v]) => {
+      if (whitespaces.includes(v))
+        return { 'white-space': v }
+    },
+    { autocomplete: `whitespace-(${whitespaces.join('|')})` },
+  ],
 ]

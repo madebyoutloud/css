@@ -26,6 +26,7 @@ export const verticalBreakpoints = { ...breakpoints } satisfies Theme['breakpoin
 
 const spacing = [0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96]
 const zIndex = [0, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500]
+const weight = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 const colors = {
   white: '#ffffff',
@@ -39,9 +40,8 @@ export const theme: Theme = {
   unit: 'rem',
 
   spacing,
-
+  weight,
   colors,
-
   zIndex,
 
   grid: {
@@ -71,7 +71,7 @@ export interface Theme {
    */
   baseFontSize?: number
   spacing?: number[]
-
+  weight?: number[]
   zIndex?: number[]
 
   colors?: Record<string, string>

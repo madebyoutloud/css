@@ -3,21 +3,21 @@ import { theme } from '@outloud/css/src/theme'
 
 interface ClassName {
   name: string
-  properties: string
+  properties: string[]
 }
 
 const shorthands: Record<string, any> = {
-  num: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  num: [0, 1, 2, 3, 4, 5, 6, 8, 10, 20, 30, 40],
 }
 
-function propertiesToString(properties: CSSObject | CSSEntries | string): string {
+function mapProperties(properties: CSSObject | CSSEntries | string): string[] {
   if (Array.isArray(properties))
-    return properties.map(([key, value]) => `${key}: ${value}`).join('; ')
+    return properties.map(([key, value]) => `${key}: ${value};`)
 
   if (typeof properties === 'object')
-    return Object.keys(properties).map(key => `${key}: ${properties[key]}`).join('; ')
+    return Object.keys(properties).map(key => `${key}: ${properties[key]};`)
 
-  return ''
+  return []
 }
 
 function regexToClassName(regex: RegExp, args: any[] = []): string {
@@ -30,14 +30,14 @@ function regexToClassName(regex: RegExp, args: any[] = []): string {
 function generateStaticClassName(rule: Rule) {
   return {
     name: rule[0] instanceof RegExp ? regexToClassName(rule[0]) : rule[0],
-    properties: propertiesToString(rule[1] as any),
+    properties: mapProperties(rule[1] as any),
   }
 }
 
 function generateDynamicClassName(rule: Rule, args: any[]) {
   return {
     name: rule[0] instanceof RegExp ? regexToClassName(rule[0], args) : rule[0],
-    properties: propertiesToString((rule[1] as DynamicMatcher)(['', ...args], { theme } as any) as any),
+    properties: mapProperties((rule[1] as DynamicMatcher)(['', ...args], { theme } as any) as any),
   }
 }
 
