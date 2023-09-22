@@ -7,7 +7,7 @@ import type { Theme } from './theme'
 import { theme } from './theme'
 
 export type { Theme }
-export { toRem } from './helpers'
+export * from './helpers'
 
 export interface OutloudOptions {
   separators?: string[]
