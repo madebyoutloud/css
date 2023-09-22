@@ -1,5 +1,12 @@
 
 
+## [1.0.8](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.7...v1.0.8) (2023-09-22)
+
+
+### Features
+
+* export toSize ([d3b2385](https://git.outloud.dev/outloud/libraries/css/commits/d3b23856c5facd3de47c4fa18262b51a274aa15e))
+
 ## [1.0.7](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.6...v1.0.7) (2023-07-27)
 
 
