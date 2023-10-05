@@ -14,8 +14,5 @@ Utilities for controlling the stack order of an element.
 
 ## Basic usage
 
-Control the stack order (or three-dimensional positioning) of an element, regardless of order it has been displayed, using the `z-{$zIndex}` utilities.
+Control the stack order (or three-dimensional positioning) of an element, regardless of order it has been displayed, using the `z-{number}` utilities.
 
-## Customization
-
-`$zIndex` values can be configured using `theme.zIndex`.

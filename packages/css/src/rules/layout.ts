@@ -62,10 +62,8 @@ export const visibility: Rule[] = [
 ]
 
 export const zIndex: Rule[] = [
-  [/^z-(\d+)$/, ([_, v], { theme }: RuleContext<Theme>) => {
-    if (theme.zIndex?.includes(Number(v)))
-      return { 'z-index': v }
-  }, { autocomplete: 'z-$zIndex' }],
+  [/^z-(\d+)$/, ([_, v]) => ({ 'z-index': v }), { autocomplete: 'z-<num>' }],
+  [/^-z-(\d+)$/, ([_, v]) => ({ 'z-index': `-${v}` }), { autocomplete: '-z-<num>' }],
 ]
 
 function handleInsetValue(v: string, { theme }: RuleContext<Theme>): string | number | undefined {
