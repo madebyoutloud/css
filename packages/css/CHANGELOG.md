@@ -1,5 +1,12 @@
 
 
+## [1.0.9](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.8...v1.0.9) (2023-10-05)
+
+
+### Features
+
+* add opacity + negative z ([2a11cdd](https://git.outloud.dev/outloud/libraries/css/commits/2a11cdd253626b1f74c22eaf16a821acd0427a67))
+
 ## [1.0.8](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.7...v1.0.8) (2023-09-22)
 
 
