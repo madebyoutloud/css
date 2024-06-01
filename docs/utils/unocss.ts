@@ -93,5 +93,5 @@ export function generateRuleClassNames(rule: Rule): ClassName[] {
     return combinations.map(combination =>
       generateDynamicClassName(rule, combination),
     )
-  }).flat(1)
+  }).flat(1).filter(item => item.properties.length > 0)
 }

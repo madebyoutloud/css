@@ -10,9 +10,7 @@ Utilities for controlling the stack order of an element.
 
 ## Quick reference
 
+You can pass any number to `z-{number}` class, the ones listed below are just examples.
+
 :class-table{name="zIndex"}
-
-## Basic usage
-
-Control the stack order (or three-dimensional positioning) of an element, regardless of order it has been displayed, using the `z-{number}` utilities.
 
