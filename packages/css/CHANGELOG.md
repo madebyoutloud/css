@@ -1,5 +1,12 @@
 
 
+## [1.0.10](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.9...v1.0.10) (2024-06-01)
+
+
+### Features
+
+* add w and h classes ([74e164f](https://git.outloud.dev/outloud/libraries/css/commits/74e164f33c13b98977e1f0b5f5ba85e09c157a63))
+
 ## [1.0.9](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.8...v1.0.9) (2023-10-05)
 
 
