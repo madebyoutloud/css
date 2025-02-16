@@ -32,7 +32,7 @@ build:docs:
 deploy:docs:
   stage: deploy
   dependencies:
-    - build_docs
+    - build:docs
   resource_group: docs
   before_script:
     - apk add --no-cache aws-cli
