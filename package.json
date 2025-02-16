@@ -1,7 +1,7 @@
 {
   "name": "@outloud/css",
   "type": "module",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "CSS preset for UnoCSS by Outloud.",
   "author": "Outloud <hello@outloud.co> (https://outloud.co)",
   "contributors": [
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.1",
+    "@release-it/conventional-changelog": "^10.0.0",
     "@types/node": "^22.13.4",
     "@unocss/core": "^65.5.0",
     "eslint": "^9.20.1",

@@ -1,4 +1,6 @@
+# Changelog
 
+# [2.0.0](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.10...v2.0.0) (2025-02-16)
 
 ## [1.0.10](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.9...v1.0.10) (2024-06-01)
 
