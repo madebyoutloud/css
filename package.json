@@ -1,13 +1,70 @@
 {
+  "name": "@outloud/css",
+  "type": "module",
+  "version": "1.0.10",
+  "description": "CSS preset for UnoCSS by Outloud.",
+  "author": "Outloud <hello@outloud.co> (https://outloud.co)",
+  "contributors": [
+    "Andrej Adamcik <andrej@outloud.co>"
+  ],
+  "keywords": [
+    "unocss",
+    "outloud",
+    "css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "./*": "./dist/*"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "build:library": "pnpm --filter @outloud/css build",
-    "postinstall": "pnpm build:library"
+    "prepack": "pnpm build",
+    "build": "unbuild && rm -f dist/*.d.mts",
+    "dev": "unbuild --stub",
+    "play": "pnpm --filter ./playground run dev",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "release": "pnpm prepack && release-it",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "@unocss/core": "^65"
+  },
+  "dependencies": {
+    "@unocss/rule-utils": "^65"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.5",
-    "@types/node": "^20.3.1",
-    "eslint": "^8.43.0",
-    "prettier": "^2.8.8",
-    "typescript": "^5.0.2"
+    "@antfu/eslint-config": "^4.2.1",
+    "@types/node": "^22.13.4",
+    "@unocss/core": "^65.5.0",
+    "eslint": "^9.20.1",
+    "eslint-plugin-format": "^1.0.1",
+    "release-it": "^18.1.2",
+    "sass-embedded": "^1.85.0",
+    "typescript": "^5.7.3",
+    "unbuild": "^3.3.1",
+    "vitest": "^3.0.5"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "vue-demi"
+    ],
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
   }
 }

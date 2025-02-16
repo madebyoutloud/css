@@ -83,7 +83,7 @@ export function generateRuleClassNames(rule: Rule): ClassName[] {
   const autocomplete = Array.isArray(rule[2].autocomplete) ? rule[2].autocomplete : [rule[2].autocomplete]
 
   return autocomplete.map((name) => {
-    const parts = name.match(/(\([^)]*\)|<(?:[^>]+)>|(?:\$\w+))/g)
+    const parts = name.match(/(\([^)]*\)|<[^>]+>|\$\w+)/g)
 
     if (!parts)
       return []

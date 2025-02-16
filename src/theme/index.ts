@@ -28,6 +28,9 @@ const spacing = [0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96]
 const weight = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 const colors = {
+  inherit: 'inherit',
+  current: 'currentColor',
+  transparent: 'transparent',
   white: '#ffffff',
   black: '#000000',
 }
@@ -58,6 +61,10 @@ export const theme: Theme = {
   containers,
 }
 
+export interface Colors {
+  [key: string]: Colors | string
+}
+
 export interface Theme {
   /**
    * @default rem
@@ -74,7 +81,7 @@ export interface Theme {
   /** Font weight for fw-{value} */
   weight?: number[]
 
-  colors?: Record<string, string>
+  colors?: Colors
 
   grid?: {
     columns?: number

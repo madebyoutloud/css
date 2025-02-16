@@ -14,6 +14,13 @@ export default defineNuxtConfig({
         svgo: false,
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
   },
 
   css: ['@outloud/css/reset.css', '~/styles/app.scss'],
@@ -23,7 +30,7 @@ export default defineNuxtConfig({
   ],
 
   alias: {
-    '@outloud/css/src': path.resolve(__dirname, '../packages/css/src'),
+    '@outloud/css/src': path.resolve(__dirname, '../src'),
   },
 
   unocss: {

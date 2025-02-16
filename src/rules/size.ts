@@ -8,6 +8,9 @@ const widthValues: Record<string, string[]> = {
   min: ['min-content'],
   max: ['max-content'],
   fit: ['fit-content'],
+  dvw: ['100dvw'],
+  svw: ['100lvw'],
+  lvw: ['100lvw'],
 }
 
 const heightValues: Record<string, string[]> = {
@@ -16,6 +19,9 @@ const heightValues: Record<string, string[]> = {
   min: ['min-content'],
   max: ['max-content'],
   fit: ['fit-content'],
+  dvh: ['100dvh'],
+  svh: ['100lvh'],
+  lvh: ['100lvh'],
 }
 
 export const width: Rule[] = [

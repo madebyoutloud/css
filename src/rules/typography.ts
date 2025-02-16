@@ -1,6 +1,7 @@
-import type { Rule, RuleContext } from '@unocss/core'
-import { convertSize } from '../utils/helpers'
+import type { Rule } from '@unocss/core'
 import type { Theme } from '../theme'
+import { colorResolver } from '../utils/color'
+import { convertSize } from '../utils/helpers'
 
 export const fontSize: Rule[] = [
   [/^fs-(\d+)$/, ([_, v], { theme }) => ({ 'font-size': convertSize(v, theme) }), { autocomplete: 'fs-<num>' }],
@@ -43,12 +44,9 @@ export const textOverflow: Rule[] = [
 ]
 
 export const textColor: Rule[] = [
-  [/^text-(.+)$/, ([_, v], { theme }: RuleContext<Theme>) => {
-    const colorValue = theme.colors?.[v]
-
-    if (colorValue)
-      return { color: colorValue }
-  }, { autocomplete: 'text-$colors' }],
+  [/^color-(.+)$/, colorResolver('color'), { autocomplete: 'color-$colors' }],
+  // TODO: remove
+  [/^text-(.+)$/, colorResolver('color'), { autocomplete: 'text-$colors' }],
 ]
 
 const whitespaces = ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'break-spaces']

@@ -1,10 +1,10 @@
 import type { Preset } from '@unocss/core'
 
-import { rules } from './rules'
-import { variants } from './variants'
-import { shortcuts } from './shortcuts'
 import type { Theme } from './theme'
+import { rules } from './rules'
+import { shortcuts } from './shortcuts'
 import { theme } from './theme'
+import { variants } from './variants'
 
 export type { Theme }
 export * from './helpers'
