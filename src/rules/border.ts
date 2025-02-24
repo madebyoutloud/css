@@ -1,7 +1,8 @@
 import type { CSSEntries, CSSObject, Rule, RuleContext } from '@unocss/core'
 import type { Theme } from '../theme'
-import { directionMap } from '../utils/mappings'
+import { colorResolver } from '../utils/color'
 import { convertSize } from '../utils/helpers'
+import { directionMap } from '../utils/mappings'
 
 export const borderWidth: Rule<Theme>[] = [
   [/^border-(\d+)$/, handlerBorderWidth, { autocomplete: 'border-<num>' }],
@@ -15,12 +16,7 @@ export const borderRadius: Rule[] = [
 ]
 
 export const borderColor: Rule<Theme>[] = [
-  [/^border-(.+)$/, ([_, v], { theme }) => {
-    const colorValue = theme.colors?.[v]
-
-    if (colorValue)
-      return { 'border-color': colorValue }
-  }, { autocomplete: 'border-$colors' }],
+  [/^border-(.+)$/, colorResolver('border-color'), { autocomplete: 'border-$colors' }],
 ]
 
 function handlerBorderWidth([, direction, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {

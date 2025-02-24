@@ -1,11 +1,7 @@
 import type { Rule } from '@unocss/core'
 import type { Theme } from '../theme'
+import { colorResolver } from '../utils/color'
 
 export const backgroundColor: Rule<Theme>[] = [
-  [/^bg-(.+)$/, ([_, v], { theme }) => {
-    const colorValue = theme.colors?.[v]
-
-    if (colorValue)
-      return { 'background-color': colorValue }
-  }, { autocomplete: 'bg-$colors' }],
+  [/^bg-(.+)$/, colorResolver('background-color'), { autocomplete: 'bg-$colors' }],
 ]
