@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.0...v2.0.1) (2025-02-24)
+
+
+### Features
+
+* add color resolver to bg and border ([8aeb70f](https://git.outloud.dev/outloud/libraries/css/commits/8aeb70f72b7715886746a0249be1bdb815f1a85f))
+
 # [2.0.0](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.10...v2.0.0) (2025-02-16)
 
 ## [1.0.10](https://git.outloud.dev/outloud/libraries/css/compare/v1.0.9...v1.0.10) (2024-06-01)
