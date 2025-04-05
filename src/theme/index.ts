@@ -24,7 +24,6 @@ export const breakpoints = {
 
 export const verticalBreakpoints = { ...breakpoints } satisfies Theme['breakpoints']
 
-const spacing = [0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 96]
 const weight = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 const colors = {
@@ -41,7 +40,6 @@ export const theme: Theme = {
   baseFontSize: 16,
   unit: 'rem',
 
-  spacing,
   weight,
   colors,
 
@@ -76,8 +74,6 @@ export interface Theme {
    */
   baseFontSize?: number
 
-  /** Spacing for m-{value} or p-{value} */
-  spacing?: number[]
   /** Font weight for fw-{value} */
   weight?: number[]
 

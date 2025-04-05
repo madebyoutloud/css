@@ -1,16 +1,17 @@
 import type { Rule } from '@unocss/core'
-import { margin, padding } from './spacing'
-import { borderColor, borderRadius, borderWidth } from './border'
 import { backgroundColor } from './background'
-import { aspectRatio, display, inset, isolation, objectFit, overflow, position, visibility, zIndex } from './layout'
+import { borderColor, borderRadius, borderWidth } from './border'
 import { flex, flexDirection, flexGrow, flexShrink, flexWrap } from './flex'
-import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
-import { fontSize, fontStyle, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign, whitespace } from './typography'
 import { gap } from './gap'
-import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
 import { grid } from './grid'
 import { cursor, userSelect } from './interactivity'
+import { aspectRatio, display, inset, isolation, objectFit, overflow, position, visibility, zIndex } from './layout'
 import { opacity } from './other'
+import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
+import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
+import { margin, padding } from './spacing'
+import { pointerEvents } from './static'
+import { fontSize, fontStyle, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign, whitespace } from './typography'
 
 export const rules: Rule[] = [
   // layout
@@ -83,6 +84,7 @@ export const rules: Rule[] = [
 
   // other
   opacity,
+  pointerEvents,
 
   // interactivity
   cursor,

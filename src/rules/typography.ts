@@ -7,7 +7,7 @@ export const fontSize: Rule[] = [
   [/^fs-(\d+)$/, ([_, v], { theme }) => ({ 'font-size': convertSize(v, theme) }), { autocomplete: 'fs-<num>' }],
 ]
 
-export const fontStyle = [
+export const fontStyle: Rule[] = [
   ['italic', { 'font-style': 'italic' }],
   ['not-italic', { 'font-style': 'normal' }],
 ]

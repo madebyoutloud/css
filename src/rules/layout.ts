@@ -1,7 +1,7 @@
 import type { CSSEntries, Rule, RuleContext } from '@unocss/core'
 import type { Theme } from '../theme'
-import { directionMap } from '../utils/mappings'
 import { convertSize } from '../utils/helpers'
+import { directionMap } from '../utils/mappings'
 
 export const aspectRatio: Rule[] = [
   ['aspect-square', { 'aspect-ratio': '1 / 1' }],
@@ -48,11 +48,9 @@ export const position: Rule[] = [
 ].map(v => [v, { position: v }])
 
 export const inset: Rule[] = [
-  [/^inset-(.+)$/, ([, v], ctx) => ({ inset: handleInsetValue(v, ctx) }),
-    { autocomplete: 'inset-$spacing' },
-  ],
-  [/^inset-([xy])-(.+)$/, handleInsetValues, { autocomplete: 'inset-(x|y)-$spacing' }],
-  [/^(top|left|right|bottom)-(.+)$/, ([, d, v], ctx) => ({ [d]: handleInsetValue(v, ctx) }), { autocomplete: '(top|left|right|bottom)-$spacing' }],
+  [/^inset-(.+)$/, ([, v], ctx) => ({ inset: handleInsetValue(v, ctx) }),    { autocomplete: 'inset-<num>' }  ],
+  [/^inset-([xy])-(.+)$/, handleInsetValues, { autocomplete: 'inset-(x|y)-<num>' }],
+  [/^(top|left|right|bottom)-(.+)$/, ([, d, v], ctx) => ({ [d]: handleInsetValue(v, ctx) }), { autocomplete: '(top|left|right|bottom)-<num>' }],
 ]
 
 export const visibility: Rule[] = [
@@ -67,11 +65,9 @@ export const zIndex: Rule[] = [
 ]
 
 function handleInsetValue(v: string, { theme }: RuleContext<Theme>): string | number | undefined {
-  if (v === 'auto' || theme.spacing?.includes(Number(v)))
-    return convertSize(v, theme)
+  return convertSize(v, theme)
 }
 
 function handleInsetValues([, d, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {
-  if (v === 'auto' || theme.spacing?.includes(Number(v)))
-    return directionMap[d].map(i => [i.slice(1), convertSize(v, theme)])
+  return directionMap[d].map(i => [i.slice(1), convertSize(v, theme)])
 }

@@ -11,6 +11,7 @@ const widthValues: Record<string, string[]> = {
   dvw: ['100dvw'],
   svw: ['100lvw'],
   lvw: ['100lvw'],
+  auto: ['auto'],
 }
 
 const heightValues: Record<string, string[]> = {
@@ -22,6 +23,7 @@ const heightValues: Record<string, string[]> = {
   dvh: ['100dvh'],
   svh: ['100lvh'],
   lvh: ['100lvh'],
+  auto: ['auto'],
 }
 
 export const width: Rule[] = [
@@ -31,13 +33,19 @@ export const width: Rule[] = [
   [/^w-(\d+)$/, handle('width'), { autocomplete: ['w-<num>'] }],
 ]
 
-export const minWidth: Rule[] = Object.keys(widthValues).map((key) => {
-  return [`min-w-${key}`, widthValues[key].map(v => ['min-width', v]) as CSSEntries]
-})
+export const minWidth: Rule[] = [
+  ...Object.keys(widthValues).map<Rule>((key) => {
+    return [`min-w-${key}`, widthValues[key].map(v => ['min-width', v]) as CSSEntries]
+  }),
+  [/^min-w-(\d+)$/, handle('min-width'), { autocomplete: ['min-w-<num>'] }],
+]
 
-export const maxWidth: Rule[] = Object.keys(widthValues).map((key) => {
-  return [`max-w-${key}`, widthValues[key].map(v => ['max-width', v]) as CSSEntries]
-})
+export const maxWidth: Rule[] = [
+  ...Object.keys(widthValues).map<Rule>((key) => {
+    return [`max-w-${key}`, widthValues[key].map(v => ['max-width', v]) as CSSEntries]
+  }),
+  [/^max-w-(\d+)$/, handle('max-width'), { autocomplete: ['max-w-<num>'] }],
+]
 
 export const height: Rule[] = [
   ...Object.keys(heightValues).map<Rule>((key) => {
@@ -46,19 +54,22 @@ export const height: Rule[] = [
   [/^h-(\d+)$/, handle('height'), { autocomplete: ['h-<num>'] }],
 ]
 
-export const minHeight: Rule[] = Object.keys(heightValues).map((key) => {
-  return [`min-h-${key}`, heightValues[key].map(v => ['min-height', v]) as CSSEntries]
-})
+export const minHeight: Rule[] = [
+  ...Object.keys(heightValues).map<Rule>((key) => {
+    return [`min-h-${key}`, heightValues[key].map(v => ['min-height', v]) as CSSEntries]
+  }),
+  [/^min-h-(\d+)$/, handle('min-height'), { autocomplete: ['min-h-<num>'] }],
+]
 
-export const maxHeight: Rule[] = Object.keys(heightValues).map((key) => {
-  return [`max-h-${key}`, heightValues[key].map(v => ['max-height', v]) as CSSEntries]
-})
+export const maxHeight: Rule[] = [
+  ...Object.keys(heightValues).map<Rule>((key) => {
+    return [`max-h-${key}`, heightValues[key].map(v => ['max-height', v]) as CSSEntries]
+  }),
+  [/^max-h-(\d+)$/, handle('max-height'), { autocomplete: ['max-h-<num>'] }],
+]
 
 function handle(property: string): DynamicMatcher {
   return ([_, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined => {
-    const numberValue = Number(v)
-
-    if (numberValue % 2 === 0 || numberValue === 1)
-      return [[property, convertSize(v, theme)]]
+    return [[property, convertSize(v, theme)]]
   }
 }
