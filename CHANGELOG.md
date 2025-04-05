@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.2...v2.0.3) (2025-04-05)
+
+
+### Features
+
+* update spacing + add pointer vents ([722c753](https://git.outloud.dev/outloud/libraries/css/commits/722c7531389f0f17319785e8d1cb47384932d85a))
+
 ## [2.0.2](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.1...v2.0.2) (2025-03-08)
 
 ## [2.0.1](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.0...v2.0.1) (2025-02-24)
