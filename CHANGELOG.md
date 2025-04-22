@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.5](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.4...v2.0.5) (2025-04-22)
+
+
+### Features
+
+* add preflights ([0a4128d](https://git.outloud.dev/outloud/libraries/css/commits/0a4128d098911105dba56203a44a2998e9920b16))
+
 ## [2.0.4](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.3...v2.0.4) (2025-04-22)
 
 
