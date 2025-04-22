@@ -8,8 +8,11 @@ importers:
 
   .:
     dependencies:
+      '@unocss/preset-mini':
+        specifier: '>=65'
+        version: 65.5.0
       '@unocss/rule-utils':
-        specifier: ^65
+        specifier: '>=65'
         version: 65.5.0
     devDependencies:
       '@antfu/eslint-config':

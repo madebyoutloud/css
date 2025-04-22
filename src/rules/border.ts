@@ -1,6 +1,6 @@
 import type { CSSEntries, CSSObject, Rule, RuleContext } from '@unocss/core'
 import type { Theme } from '../theme'
-import { colorResolver } from '../utils/color'
+import { colorResolver } from '@unocss/preset-mini/utils'
 import { convertSize } from '../utils/helpers'
 import { directionMap } from '../utils/mappings'
 
@@ -16,7 +16,7 @@ export const borderRadius: Rule[] = [
 ]
 
 export const borderColor: Rule<Theme>[] = [
-  [/^border-(.+)$/, colorResolver('border-color'), { autocomplete: 'border-$colors' }],
+  [/^border-(.+)$/, colorResolver('border-color', 'border', 'borderColor'), { autocomplete: 'border-$colors' }],
 ]
 
 function handlerBorderWidth([, direction, v]: string[], { theme }: RuleContext<Theme>): CSSEntries | undefined {

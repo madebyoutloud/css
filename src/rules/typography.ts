@@ -1,6 +1,6 @@
 import type { Rule } from '@unocss/core'
 import type { Theme } from '../theme'
-import { colorResolver } from '../utils/color'
+import { colorResolver } from '@unocss/preset-mini/utils'
 import { convertSize } from '../utils/helpers'
 
 export const fontSize: Rule[] = [
@@ -44,9 +44,9 @@ export const textOverflow: Rule[] = [
 ]
 
 export const textColor: Rule[] = [
-  [/^color-(.+)$/, colorResolver('color'), { autocomplete: 'color-$colors' }],
+  [/^color-(.+)$/, colorResolver('color', 'text', 'textColor'), { autocomplete: 'color-$colors' }],
   // TODO: remove
-  [/^text-(.+)$/, colorResolver('color'), { autocomplete: 'text-$colors' }],
+  [/^text-(.+)$/, colorResolver('color', 'text', 'textColor'), { autocomplete: 'text-$colors' }],
 ]
 
 const whitespaces = ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'break-spaces']

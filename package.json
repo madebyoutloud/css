@@ -40,10 +40,11 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "@unocss/core": "^65"
+    "@unocss/core": ">=65"
   },
   "dependencies": {
-    "@unocss/rule-utils": "^65"
+    "@unocss/preset-mini": ">=65",
+    "@unocss/rule-utils": ">=65"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.1",
