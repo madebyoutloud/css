@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.3...v2.0.4) (2025-04-22)
+
+
+### Bug Fixes
+
+* color resolver ([f38fb6e](https://git.outloud.dev/outloud/libraries/css/commits/f38fb6e83d9ebb3e5f43e466b74bf46ecfec2091))
+
 ## [2.0.3](https://git.outloud.dev/outloud/libraries/css/compare/v2.0.2...v2.0.3) (2025-04-05)
 
 
