@@ -1,6 +1,7 @@
 import type { Preset } from '@unocss/core'
 
 import type { Theme } from './theme'
+import { preflights } from './preflights'
 import { rules } from './rules'
 import { shortcuts } from './shortcuts'
 import { theme } from './theme'
@@ -23,5 +24,6 @@ export function presetOutloud(options: OutloudOptions = {}): Preset<Theme> {
     variants: variants(options),
     rules,
     shortcuts,
+    preflights,
   }
 }
