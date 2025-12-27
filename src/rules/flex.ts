@@ -1,33 +1,17 @@
 import type { Rule } from '@unocss/core'
+import type { Theme } from '@unocss/preset-mini'
+import { flex as baseFlex } from '@unocss/preset-mini/rules'
 
-export const flex: Rule[] = [
-  ['flex-1', { flex: '1 1 0%' }],
-  ['flex-auto', { flex: '1 1 auto' }],
-  ['flex-initial', { flex: '0 1 auto' }],
+export const flex: Rule<Theme>[] = [
+  ...baseFlex as Rule<Theme>[],
   ['flex-content', { flex: '0 0 auto' }],
   ['flex-fill', { flex: '1 0 auto' }],
-  ['flex-none', { flex: 'none' }],
-]
 
-export const flexDirection: Rule[] = [
-  ['flex-row', { 'flex-direction': 'row' }],
-  ['flex-row-reverse', { 'flex-direction': 'row-reverse' }],
-  ['flex-col', { 'flex-direction': 'column' }],
-  ['flex-col-reverse', { 'flex-direction': 'column-reverse' }],
-]
-
-export const flexWrap: Rule[] = [
-  ['flex-wrap', { 'flex-wrap': 'wrap' }],
-  ['flex-wrap-reverse', { 'flex-wrap': 'wrap-reverse' }],
-  ['flex-nowrap', { 'flex-wrap': 'nowrap' }],
-]
-
-export const flexGrow: Rule[] = [
-  ['grow', { 'flex-grow': '1' }],
-  ['grow-0', { 'flex-grow': '0' }],
-]
-
-export const flexShrink: Rule[] = [
-  ['shrink', { 'flex-shrink': '1' }],
-  ['shrink-0', { 'flex-shrink': '0' }],
+  [
+    'flex-center', {
+      'display': 'flex',
+      'justify-content': 'center',
+      'align-items': 'center',
+    },
+  ],
 ]

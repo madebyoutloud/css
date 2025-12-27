@@ -1,29 +1,40 @@
-import type { Preset } from '@unocss/core'
+import { toArray, type Preset } from '@unocss/core'
 
-import type { Theme } from './theme'
-import { preflights } from './preflights'
-import { rules } from './rules'
-import { shortcuts } from './shortcuts'
-import { theme } from './theme'
-import { variants } from './variants'
+import { presetMini } from '@unocss/preset-mini'
+import type { Theme } from './theme.js'
+import { preflights } from './preflights.js'
+import { rules } from './rules/index.js'
+import { shortcuts } from './shortcuts.js'
+import { theme } from './theme.js'
+import type { PresetOutloudOptions } from './types.js'
 
 export type { Theme }
-export * from './helpers'
 
-export interface OutloudOptions {
-  separators?: string[]
-}
+export function presetOutloud(options: PresetOutloudOptions = {}): Preset<Theme> {
+  const remRE = /(-?[.\d]+)rem/g
 
-export function presetOutloud(options: OutloudOptions = {}): Preset<Theme> {
-  options.separators = options.separators ?? [':']
+  const mini = presetMini(options) as Preset<Theme>
 
   return {
-    name: 'unocss-preset-outloud',
-    options,
+    ...mini,
+    name: '@outloud/css',
     theme,
-    variants: variants(options),
     rules,
+    preflights: [
+      ...(mini.preflights ?? []),
+      ...preflights(options),
+    ],
     shortcuts,
-    preflights,
+    postprocess: [
+      ...toArray(mini.postprocess),
+      (util) => {
+        util.entries.forEach((i) => {
+          const value = i[1]
+          if (typeof value === 'string' && remRE.test(value)) {
+            i[1] = value.replace(remRE, (_, p1) => `${p1 / 4}rem`)
+          }
+        })
+      },
+    ],
   }
 }

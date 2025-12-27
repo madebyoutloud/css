@@ -3,6 +3,11 @@
   "type": "module",
   "version": "2.0.5",
   "description": "CSS preset for UnoCSS by Outloud.",
+  "homepage": "https://css.byoutloud.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madebyoutloud/css.git"
+  },
   "author": "Outloud <hello@outloud.co> (https://outloud.co)",
   "contributors": [
     "Andrej Adamcik <andrej@outloud.co>"
@@ -12,16 +17,21 @@
     "outloud",
     "css"
   ],
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
+    },
+    "./helpers": {
+      "types": "./dist/helpers.d.mts",
+      "default": "./dist/helpers.mjs"
     },
     "./*": "./dist/*"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
@@ -29,44 +39,29 @@
     "node": ">=20"
   },
   "scripts": {
-    "prepack": "pnpm build",
-    "build": "unbuild && rm -f dist/*.d.mts",
-    "dev": "unbuild --stub",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "play": "pnpm --filter ./playground run dev",
     "lint": "eslint .",
-    "format": "prettier --write .",
-    "release": "pnpm prepack && release-it",
+    "release": "pnpm build && release-it",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },
-  "peerDependencies": {
-    "@unocss/core": ">=65"
-  },
   "dependencies": {
-    "@unocss/preset-mini": ">=65",
-    "@unocss/rule-utils": ">=65"
+    "@unocss/core": "^66",
+    "@unocss/preset-mini": "^66",
+    "@unocss/reset": "^66.5.11",
+    "@unocss/rule-utils": "^66"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.2.1",
-    "@release-it/conventional-changelog": "^10.0.0",
-    "@types/node": "^22.13.4",
-    "@unocss/core": "^65.5.0",
-    "eslint": "^9.20.1",
-    "eslint-plugin-format": "^1.0.1",
-    "release-it": "^18.1.2",
-    "sass-embedded": "^1.85.0",
-    "typescript": "^5.7.3",
-    "unbuild": "^3.3.1",
-    "vitest": "^3.0.5"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild",
-      "vue-demi"
-    ],
-    "onlyBuiltDependencies": [
-      "better-sqlite3"
-    ]
+    "@arethetypeswrong/core": "^0.18.2",
+    "@outloud/eslint-config": "^2.0.7",
+    "@types/node": "^25.0.3",
+    "eslint": "^9.39.2",
+    "eslint-plugin-format": "^1.1.0",
+    "release-it": "^19.2.2",
+    "sass-embedded": "^1.97.1",
+    "tsdown": "^0.18.3",
+    "typescript": "~5.8.3"
   }
 }

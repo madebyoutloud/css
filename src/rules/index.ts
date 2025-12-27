@@ -1,93 +1,131 @@
 import type { Rule } from '@unocss/core'
-import { backgroundColor } from './background'
-import { borderColor, borderRadius, borderWidth } from './border'
-import { flex, flexDirection, flexGrow, flexShrink, flexWrap } from './flex'
-import { gap } from './gap'
-import { grid } from './grid'
-import { cursor, userSelect } from './interactivity'
-import { aspectRatio, display, inset, isolation, objectFit, overflow, position, visibility, zIndex } from './layout'
-import { opacity } from './other'
-import { alignContent, alignItems, alignSelf, justifyContent, justifyItems, justifySelf, order, placeContent, placeItems, placeSelf } from './position'
-import { height, maxHeight, maxWidth, minHeight, minWidth, width } from './size'
-import { margin, padding } from './spacing'
-import { pointerEvents } from './static'
-import { fontSize, fontStyle, fontWeight, textAlign, textColor, textDecoration, textOverflow, textTransform, verticalAlign, whitespace } from './typography'
-
-export const rules: Rule[] = [
-  // layout
+import {
+  alignments,
+  appearance,
+  appearances,
   aspectRatio,
-  display,
-  isolation,
-  objectFit,
-  overflow,
-  position,
-  inset,
-  visibility,
-  zIndex,
-
-  // flex
-  flex,
-  flexDirection,
-  flexWrap,
-  flexGrow,
-  flexShrink,
-
-  // grid
-  grid,
-
-  // gap
-  gap,
-
-  // position
-  justifyContent,
-  justifyItems,
-  justifySelf,
-  order,
-  alignContent,
-  alignItems,
-  alignSelf,
-  placeContent,
-  placeItems,
-  placeSelf,
-
-  // spacing
-  margin,
-  padding,
-
-  // sizes
-  width,
-  minWidth,
-  maxWidth,
-  height,
-  minHeight,
-  maxHeight,
-
-  // typography
-  fontSize,
-  fontStyle,
-  fontWeight,
-  textAlign,
-  verticalAlign,
-  textTransform,
-  textDecoration,
-  textOverflow,
-  textColor,
-  whitespace,
-
-  // backgrounds
-  backgroundColor,
-
-  // borders
-  borderWidth,
-  borderRadius,
-  borderColor,
-
-  // other
+  bgColors,
+  borders,
+  boxShadows,
+  boxSizing,
+  breaks,
+  colorScheme,
+  containerParent,
+  contains,
+  contents,
+  contentVisibility,
+  cssProperty,
+  cssVariables,
+  cursors,
+  displays,
+  fieldSizing,
+  flexGridJustifiesAlignments,
+  floats,
+  fontSmoothings,
+  fontStyles,
+  gaps,
+  insets,
+  justifies,
+  margins,
   opacity,
+  orders,
+  outline,
+  overflows,
+  paddings,
+  placements,
   pointerEvents,
+  positions,
+  questionMark,
+  resizes,
+  rings,
+  sizes,
+  svgUtilities,
+  tabSizes,
+  textAligns,
+  textDecorations,
+  textIndents,
+  textOverflows,
+  textShadows,
+  textStrokes,
+  textTransforms,
+  textWraps,
+  transforms,
+  transitions,
+  userSelects,
+  verticalAligns,
+  whitespaces,
+  willChange,
+  zIndexes,
+} from '@unocss/preset-mini/rules'
+import type { Theme } from '../theme.js'
+import { grids } from './grid.js'
+import { flex } from './flex.js'
+import { fonts } from './typography.js'
+import { flow } from './flow.js'
+import { container } from './container.js'
 
-  // interactivity
-  cursor,
-  userSelect,
+export const rules: Rule<Theme>[] = [
+  cssVariables,
+  cssProperty,
+  contains,
+  pointerEvents,
+  appearances,
+  positions,
+  insets,
+  zIndexes,
+  orders,
+  grids, // custom
+  floats,
+  margins,
+  boxSizing,
+  displays,
+  aspectRatio,
+  flow, // custom
+  container, // custom
+  sizes,
+  flex, // custom
+  transforms,
+  cursors,
+  userSelects,
+  resizes,
+  appearance,
+  placements,
+  alignments,
+  justifies,
+  gaps,
+  flexGridJustifiesAlignments,
+  overflows,
+  textOverflows,
+  whitespaces,
+  breaks,
+  borders,
+  bgColors,
+  colorScheme,
+  svgUtilities,
+  paddings,
+  textAligns,
+  textIndents,
+  textWraps,
+  verticalAligns,
+  fonts, // custom
+  textTransforms,
+  fontStyles,
+  textDecorations,
+  fontSmoothings,
+  tabSizes,
+  textStrokes,
+  textShadows,
+  opacity,
+  boxShadows,
+  outline,
+  rings,
+  transitions,
+  willChange,
+  contentVisibility,
+  contents,
+  containerParent,
+  fieldSizing,
 
-].flat(1)
+  // should be the last
+  questionMark,
+].flat(1) as Rule<Theme>[]

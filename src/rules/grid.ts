@@ -1,20 +1,37 @@
 import type { Rule } from '@unocss/core'
-import type { Theme } from '../theme'
+import { grids as baseGrids } from '@unocss/preset-mini/rules'
+import { h } from '@unocss/preset-mini/utils'
+import type { Theme } from '../theme.js'
 
-export const grid: Rule<Theme>[] = [
-  [/^grid-cols-(\d+)$/, ([_, v]) => ({ 'grid-template-columns': `repeat(${v}, minmax(0, 1fr))` })],
-  [/^col-(\d+)$/, ([_, v], { theme }) => {
-    const { columns = 12 } = theme.grid ?? {}
-    const value = Number(v)
+const colRule = String(/^(?:grid-)?(row|col)-(.+)$/)
 
-    if (value <= columns)
+export const grids: Rule<Theme>[] = [
+  ...baseGrids.map((rule) => {
+    if (String(rule[0]) === colRule) {
+      rule[0] = /^grid-(row|col)-(.+)$/
+    }
+
+    return rule
+  }) as Rule<Theme>[],
+  [
+    /^columns$/, (_, { theme }) => {
+      return {
+        'display': 'grid',
+        'grid-template-columns': `repeat(${theme.grid?.columns},minmax(0,1fr))`,
+        'gap': h.bracket.cssvar.global.fraction.rem(String(theme.grid?.gap ?? 0)),
+      }
+    },
+  ],
+  [
+    /^col-(\d+)$/, ([_, v]) => {
+      const value = Number(v)
+
       return { 'grid-column': `span ${value} / span ${value}` }
-  }],
-  [/^offset-(\d+)$/, ([_, v], { theme }) => {
-    const { columns = 12 } = theme.grid ?? {}
-    const value = Number(v)
-
-    if (value <= columns - 1)
-      return { 'grid-column-start': `${value}` }
-  }],
+    },
+  ],
+  [
+    /^offset-(\d+)$/, ([_, v]) => {
+      return { 'grid-column-start': `${Number(v)}` }
+    },
+  ],
 ]

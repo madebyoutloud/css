@@ -1,6 +1,8 @@
 // @ts-check
-import { antfu } from '@antfu/eslint-config'
+import { createConfig } from '@outloud/eslint-config'
 
-export default antfu({
-  formatters: true,
+export default createConfig({
+  features: {
+    stylistic: true
+  }
 })
