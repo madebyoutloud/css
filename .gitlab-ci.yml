@@ -30,7 +30,7 @@ publish:library:
     - |
       # Publish to npm registry
       echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-      pnpm publish
+      pnpm publish --access public
 
     - |
       # Publish to Gitlab registry
