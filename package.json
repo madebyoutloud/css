@@ -3,6 +3,7 @@
   "type": "module",
   "version": "3.0.0",
   "description": "CSS preset for UnoCSS by Outloud.",
+  "license": "MIT",
   "homepage": "https://css.byoutloud.com",
   "repository": {
     "type": "git",
