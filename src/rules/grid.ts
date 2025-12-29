@@ -17,7 +17,7 @@ export const grids: Rule<Theme>[] = [
     /^columns$/, (_, { theme }) => {
       return {
         'display': 'grid',
-        'grid-template-columns': `repeat(${theme.grid?.columns},minmax(0,1fr))`,
+        'grid-template-columns': `repeat(${theme.grid?.columns}, minmax(0, 1fr))`,
         'gap': h.bracket.cssvar.global.fraction.rem(String(theme.grid?.gap ?? 0)),
       }
     },

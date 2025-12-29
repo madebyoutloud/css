@@ -8,11 +8,11 @@ export const container: Rule<Theme>[] = [
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
 
       const properties: CSSObject = {
-        '--padding': '0',
-        '--max-width': '0',
+        '--un-padding': '0',
+        '--un-max-width': '0',
         'container-type': 'inline-size',
-        'max-width': 'calc(var(--max-width) + (var(--padding) * 2))',
-        'padding': 'var(--padding)',
+        'max-width': 'calc(var(--un-max-width) + (var(--un-padding) * 2))',
+        'padding': 'var(--un-padding)',
         'margin-inline': 'auto',
       }
 
@@ -21,9 +21,9 @@ export const container: Rule<Theme>[] = [
 
       if (theme.container) {
         const padding = theme.container.padding
-        padding && (properties['--padding'] = toSize(padding))
+        padding && (properties['--un-padding'] = toSize(padding))
         const maxWidth = resolveDefault(theme.container.maxWidth)
-        maxWidth && (properties['--max-width'] = toSize(maxWidth))
+        maxWidth && (properties['--un-max-width'] = toSize(maxWidth))
 
         const sizes = typeof theme.container.maxWidth === 'object' ? theme.container.maxWidth : {}
 
@@ -32,7 +32,7 @@ export const container: Rule<Theme>[] = [
             continue
           }
 
-          entries.push([`${selector}[data-size=${key}]`, { '--max-width': toSize(value) }])
+          entries.push([`${selector}[data-size=${key}]`, { '--un-max-width': toSize(value) }])
         }
       }
 
