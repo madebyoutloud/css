@@ -11,6 +11,7 @@ export const container: Rule<Theme>[] = [
         '--un-padding': '0',
         '--un-max-width': '0',
         'container-type': 'inline-size',
+        'width': '100%',
         'max-width': 'calc(var(--un-max-width) + (var(--un-padding) * 2))',
         'padding': 'var(--un-padding)',
         'margin-inline': 'auto',
