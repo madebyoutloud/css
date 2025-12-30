@@ -9,6 +9,7 @@ export default defineConfig({
   clean: true,
   dts: true,
   treeshake: true,
+  minify: true,
   outDir: './dist',
   format: ['esm'],
   platform: 'node',
