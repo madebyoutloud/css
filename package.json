@@ -1,7 +1,7 @@
 {
   "name": "@outloud/css",
   "type": "module",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "CSS preset for UnoCSS by Outloud.",
   "license": "MIT",
   "homepage": "https://css.byoutloud.com",
