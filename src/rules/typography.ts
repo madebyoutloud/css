@@ -4,7 +4,7 @@ import { fonts as baseFonts } from '@unocss/preset-mini/rules'
 import { h } from '@unocss/preset-mini/utils'
 
 export const fonts: Rule<Theme>[] = [
-  ...baseFonts as Rule<Theme>[],
+  ...baseFonts,
   [/^fs-(.+)$/, handleSize, { autocomplete: 'fs-$fontSize' }],
 ]
 

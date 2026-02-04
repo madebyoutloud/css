@@ -1,6 +1,7 @@
 import type { CSSObject, Rule } from '@unocss/core'
 import type { Theme } from '../theme.js'
 import { toSize } from '../helpers.js'
+import { entriesToCss } from './helpers.js'
 
 export const container: Rule<Theme>[] = [
   [
@@ -37,14 +38,7 @@ export const container: Rule<Theme>[] = [
         }
       }
 
-      return entries.map(([ruleSelector, props]) => {
-        const style = Object.entries(props)
-          .map(([key, value]) => `${key}:${value}`)
-          .join(';')
-
-        return `${ruleSelector}{${style}}`
-      })
-        .join('\n')
+      return entriesToCss(entries)
     },
   ],
 ]

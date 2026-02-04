@@ -1,6 +1,7 @@
-import { e, type CSSObject, type Rule } from '@unocss/core'
+import type { Rule } from '@unocss/core'
 import type { Theme } from '../theme.js'
 import { toSize } from '../helpers.js'
+import { entriesToCss } from './helpers.js'
 
 export const flow: Rule<Theme>[] = [
   [
@@ -9,7 +10,7 @@ export const flow: Rule<Theme>[] = [
 
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
 
-      const entries: [string, CSSObject][] = [
+      return entriesToCss([
         [
           selector, {
             '--un-padding': toSize(theme.flow?.padding ?? 0),
@@ -35,16 +36,7 @@ export const flow: Rule<Theme>[] = [
         [`${selector} > *`, { 'grid-column': 'content' }],
         [`${selector} > [data-flow=breakout]`, { 'grid-column': 'breakout' }],
         [`${selector} > [data-flow=full-width]`, { 'grid-column': 'full-width' }],
-      ]
-
-      return entries.map(([ruleSelector, props]) => {
-        const style = Object.entries(props)
-          .map(([key, value]) => `${key}:${value}`)
-          .join(';')
-
-        return `${ruleSelector}{${style}}`
-      })
-        .join('\n')
+      ])
     },
   ],
 ]

@@ -3,6 +3,9 @@ import { createConfig } from '@outloud/eslint-config'
 
 export default createConfig({
   features: {
-    stylistic: true
-  }
+    stylistic: true,
+  },
+  style: {
+    complexity: 10,
+  },
 })
