@@ -21,10 +21,23 @@ export const utils: Rule<Theme>[] = [
   ],
 
   [
-    'pile', {
-      'display': 'grid',
-      'grid-template-areas': '"pile"',
-      'place-items': 'center',
+    /^pile$/, (_, { rawSelector }) => {
+      const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
+
+      return entriesToCss([
+        [
+          selector, {
+            'display': 'grid',
+            'grid-template-areas': '"pile"',
+            'place-items': 'center',
+          },
+        ],
+        [
+          `${selector} > *`, {
+            'grid-area': 'pile',
+          },
+        ],
+      ])
     },
   ],
 ]
