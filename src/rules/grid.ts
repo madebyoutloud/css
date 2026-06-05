@@ -4,17 +4,7 @@ import type { Theme } from '../theme.js'
 import { toSize } from '../helpers.js'
 import { entriesToCss } from './helpers.js'
 
-const colRule = String(/^(?:grid-)?(row|col)-(.+)$/)
-
-export const grids: Rule<Theme>[] = [
-  ...baseGrids.map((rule) => {
-    // replace the original grid row/col rule to avoid conflicts with col-*
-    if (String(rule[0]) === colRule) {
-      rule[0] = /^grid-(row|col)-(.+)$/
-    }
-
-    return rule
-  }) as Rule<Theme>[],
+const gridSystem: Rule<Theme>[] = [
   [
     /^columns$/, (_, { rawSelector, theme }) => {
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
@@ -44,4 +34,18 @@ export const grids: Rule<Theme>[] = [
       return { 'grid-column-start': `${Number(v)}` }
     },
   ],
+]
+
+const colRule = String(/^(?:grid-)?(row|col)-(.+)$/)
+
+export const grids: Rule<Theme>[] = [
+  ...baseGrids.map((rule) => {
+    // replace the original grid row/col rule to avoid conflicts with col-*
+    if (String(rule[0]) === colRule) {
+      rule[0] = /^grid-(row|col)-(.+)$/
+    }
+
+    return rule
+  }) as Rule<Theme>[],
+  ...gridSystem,
 ]

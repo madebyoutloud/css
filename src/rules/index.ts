@@ -63,6 +63,7 @@ import { flex } from './flex.js'
 import { fonts } from './typography.js'
 import { flow } from './flow.js'
 import { container } from './container.js'
+import { utils } from './utils.js'
 
 export const rules: Rule<Theme>[] = [
   cssVariables,
@@ -84,6 +85,7 @@ export const rules: Rule<Theme>[] = [
   container, // custom
   sizes,
   flex, // custom
+  utils, // custom
   transforms,
   cursors,
   userSelects,

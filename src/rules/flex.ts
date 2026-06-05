@@ -14,4 +14,11 @@ export const flex: Rule<Theme>[] = [
       'align-items': 'center',
     },
   ],
+
+  [
+    'stack', {
+      'display': 'flex',
+      'flex-direction': 'column',
+    },
+  ],
 ]
