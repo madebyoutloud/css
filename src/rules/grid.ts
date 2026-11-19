@@ -44,9 +44,12 @@ const colRule = String(/^(?:grid-)?(row|col)-(.+)$/)
 
 export const grids: Rule<Theme>[] = [
   ...(baseGrids.map((rule) => {
-    // replace the original grid row/col rule to avoid conflicts with col-*
+    // a copy of preset-mini's row/col rule that needs `grid-`, so `col-*` is the grid system's
+    // preset-mini's own rule stays as it is for other presets in the same build
     if (String(rule[0]) === colRule) {
-      rule[0] = /^grid-(row|col)-(.+)$/
+      const [, ...rest] = rule
+
+      return [/^grid-(row|col)-(.+)$/, ...rest]
     }
 
     return rule

@@ -1,3 +1,4 @@
+import { grids as baseGrids } from '@unocss/preset-mini/rules'
 import { describe, expect, test } from 'vitest'
 import { declarations, generate } from './generate.js'
 
@@ -126,5 +127,13 @@ describe('values need a dash', () => {
     ['m-auto', 'margin:auto;'],
   ])('%s', async (className, expected) => {
     expect(await declarations(className)).toBe(expected)
+  })
+})
+
+describe('preset-mini stays as it is', () => {
+  test('its row/col rule still takes col-span-*', () => {
+    const rule = baseGrids.find(([matcher]) => String(matcher).includes('(row|col)'))
+
+    expect(String(rule?.[0])).toBe(String(/^(?:grid-)?(row|col)-(.+)$/))
   })
 })
