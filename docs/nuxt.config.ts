@@ -2,6 +2,7 @@ export default defineNuxtConfig({
   extends: ['@outloud/docs'],
   site: {
     name: 'Outloud CSS',
+    url: 'https://docs.outloud.dev/css',
   },
 
   package: {

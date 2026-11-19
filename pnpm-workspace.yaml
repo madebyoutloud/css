@@ -9,3 +9,7 @@ allowBuilds:
   sharp: true
   unrs-resolver: false
   vue-demi: true
+
+# docus 5.15 adds nuxt-agent-discovery, which fails the build under the /css/ base path
+overrides:
+  docus: ~5.13.0
