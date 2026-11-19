@@ -8,7 +8,8 @@ export const flex: Rule<Theme>[] = [
   ['flex-fill', { flex: '1 0 auto' }],
 
   [
-    'flex-center', {
+    'flex-center',
+    {
       'display': 'flex',
       'justify-content': 'center',
       'align-items': 'center',
@@ -16,7 +17,8 @@ export const flex: Rule<Theme>[] = [
   ],
 
   [
-    'stack', {
+    'stack',
+    {
       'display': 'flex',
       'flex-direction': 'column',
     },

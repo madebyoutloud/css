@@ -3,10 +3,7 @@ import type { Theme } from '@unocss/preset-mini'
 import { fonts as baseFonts } from '@unocss/preset-mini/rules'
 import { h } from '@unocss/preset-mini/utils'
 
-export const fonts: Rule<Theme>[] = [
-  ...baseFonts,
-  [/^fs-(.+)$/, handleSize, { autocomplete: 'fs-$fontSize' }],
-]
+export const fonts: Rule<Theme>[] = [...baseFonts, [/^fs-(.+)$/, handleSize, { autocomplete: 'fs-$fontSize' }]]
 
 function handleSize([, s]: string[], { theme }: RuleContext<Theme>): CSSObject | undefined {
   const themed = toArray(theme.fontSize?.[s!]) as [string, string | CSSObject]

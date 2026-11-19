@@ -1,12 +1,10 @@
-minimumReleaseAge: 10080 # 7 days in minutes
-trustPolicy: off
-trustPolicyIgnoreAfter: 20160 # 14 days in minutes
-blockExoticSubdeps: true
-
 packages:
   - .
   - docs
-  - playground
+
+minimumReleaseAge: 10080 # 7 days in minutes
+trustPolicyIgnoreAfter: 20160 # 14 days in minutes
+blockExoticSubdeps: true
 
 allowBuilds:
   '@parcel/watcher': true
@@ -15,3 +13,6 @@ allowBuilds:
   sharp: true
   unrs-resolver: false
   vue-demi: true
+
+minimumReleaseAgeExclude:
+  - '@outloud/*'

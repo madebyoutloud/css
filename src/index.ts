@@ -1,10 +1,9 @@
 import { toArray, type Preset } from '@unocss/core'
-
 import { presetMini } from '@unocss/preset-mini'
-import type { Theme } from './theme.js'
 import { preflights } from './preflights.js'
 import { rules } from './rules/index.js'
 import { shortcuts } from './shortcuts.js'
+import type { Theme } from './theme.js'
 import { theme } from './theme.js'
 import type { PresetOutloudOptions } from './types.js'
 
@@ -20,10 +19,7 @@ export function presetOutloud(options: PresetOutloudOptions = {}): Preset<Theme>
     name: '@outloud/css',
     theme,
     rules,
-    preflights: [
-      ...(mini.preflights ?? []),
-      ...preflights(options),
-    ],
+    preflights: [...(mini.preflights ?? []), ...preflights(options)],
     shortcuts,
     postprocess: [
       ...toArray(mini.postprocess),

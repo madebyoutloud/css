@@ -1,6 +1,6 @@
 import type { Preflight } from '@unocss/core'
-import type { PresetOutloudOptions } from './types.js'
 import type { Theme } from './theme.js'
+import type { PresetOutloudOptions } from './types.js'
 
 export function preflights(options: PresetOutloudOptions): Preflight<Theme>[] {
   const result: Preflight<Theme>[] = []
@@ -13,8 +13,7 @@ export function preflights(options: PresetOutloudOptions): Preflight<Theme>[] {
           return
         }
 
-        const css = collectColors(theme.colors)
-          .join('\n')
+        const css = collectColors(theme.colors).join('\n')
 
         return `:root{${css}}`
       },

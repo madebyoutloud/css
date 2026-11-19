@@ -58,11 +58,11 @@ import {
   zIndexes,
 } from '@unocss/preset-mini/rules'
 import type { Theme } from '../theme.js'
-import { grids } from './grid.js'
-import { flex } from './flex.js'
-import { fonts } from './typography.js'
-import { flow } from './flow.js'
 import { container } from './container.js'
+import { flex } from './flex.js'
+import { flow } from './flow.js'
+import { grids } from './grid.js'
+import { fonts } from './typography.js'
 import { utils } from './utils.js'
 
 export const rules: Rule<Theme>[] = [

@@ -6,12 +6,14 @@ import { entriesToCss } from './helpers.js'
 
 export const utils: Rule<Theme>[] = [
   [
-    /^prose$/, (_, { rawSelector }) => {
+    /^prose$/,
+    (_, { rawSelector }) => {
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
 
       return entriesToCss([
         [
-          `${selector} > * + *`, {
+          `${selector} > * + *`,
+          {
             '--un-gap': '1em',
             'margin-block-start': `var(--un-gap)`,
           },
@@ -21,19 +23,22 @@ export const utils: Rule<Theme>[] = [
   ],
 
   [
-    /^pile$/, (_, { rawSelector }) => {
+    /^pile$/,
+    (_, { rawSelector }) => {
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
 
       return entriesToCss([
         [
-          selector, {
+          selector,
+          {
             'display': 'grid',
             'grid-template-areas': '"pile"',
             'place-items': 'center',
           },
         ],
         [
-          `${selector} > *`, {
+          `${selector} > *`,
+          {
             'grid-area': 'pile',
           },
         ],

@@ -1,7 +1,4 @@
-import {
-  type Theme as MiniTheme,
-  theme as miniTheme,
-} from '@unocss/preset-mini'
+import { type Theme as MiniTheme, theme as miniTheme } from '@unocss/preset-mini'
 
 export const theme: Theme = {
   ...miniTheme,

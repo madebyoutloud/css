@@ -1,11 +1,9 @@
 import fs from 'node:fs'
-import { defineConfig } from 'tsdown'
+import { fileURLToPath } from 'node:url'
+import { type UserConfig, defineConfig } from 'tsdown'
 
-export default defineConfig({
-  entry: [
-    'src/index.ts',
-    'src/helpers.ts',
-  ],
+const config: UserConfig = defineConfig({
+  entry: ['src/index.ts', 'src/helpers.ts'],
   clean: true,
   dts: true,
   treeshake: true,
@@ -19,17 +17,10 @@ export default defineConfig({
   },
   hooks: {
     'build:done': async () => {
-      const resetPath = import.meta.resolve('@unocss/reset/tailwind.css')
-
-      await fs.promises.copyFile(
-        resetPath.replace('file://', ''),
-        'dist/reset.css',
-      )
-
-      await fs.promises.copyFile(
-        'src/scss/helpers.scss',
-        'dist/helpers.scss',
-      )
+      await fs.promises.copyFile(fileURLToPath(import.meta.resolve('@unocss/reset/tailwind.css')), 'dist/reset.css')
+      await fs.promises.copyFile('src/scss/helpers.scss', 'dist/helpers.scss')
     },
   },
 })
+
+export default config

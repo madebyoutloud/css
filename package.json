@@ -37,32 +37,47 @@
     "dist"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "play": "pnpm --filter ./playground run dev",
-    "lint": "eslint .",
-    "release": "pnpm build && release-it",
+    "lint": "oxlint && oxfmt --check",
+    "fmt": "oxfmt",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest run",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run test",
+    "docs:dev": "pnpm --filter ./docs run dev",
+    "docs:generate": "pnpm --filter ./docs run generate",
+    "release": "pnpm build && release-it"
   },
   "dependencies": {
-    "@unocss/core": "^66",
-    "@unocss/preset-mini": "^66",
-    "@unocss/reset": "^66.5.11",
-    "@unocss/rule-utils": "^66"
+    "@unocss/core": "^66.12.0",
+    "@unocss/preset-mini": "^66.12.0",
+    "@unocss/reset": "^66.12.0",
+    "@unocss/rule-utils": "^66.12.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.18.2",
-    "@outloud/eslint-config": "^2.0.7",
-    "@types/node": "^25.0.3",
-    "eslint": "^9.39.2",
-    "eslint-plugin-format": "^1.1.0",
-    "release-it": "^19.2.2",
+    "@arethetypeswrong/core": "^0.18.5",
+    "@outloud/oxfmt-config": "^2.0.2",
+    "@outloud/oxlint-config": "^2.0.2",
+    "@outloud/tsconfig": "^2.0.2",
+    "@types/node": "^24.19.1",
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2006",
+    "release-it": "^21.1.2",
     "sass-embedded": "^1.97.1",
-    "tsdown": "^0.18.3",
-    "typescript": "~5.8.3"
+    "tsdown": "^0.23.7",
+    "typescript": "^7.0.2",
+    "unocss": "^66.12.0",
+    "vitest": "^5.1.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12",
+      "onFail": "warn"
+    }
   }
 }

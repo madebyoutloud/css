@@ -1,11 +1,12 @@
 import type { CSSObject, Rule } from '@unocss/core'
-import type { Theme } from '../theme.js'
 import { toSize } from '../helpers.js'
+import type { Theme } from '../theme.js'
 import { entriesToCss } from './helpers.js'
 
 export const container: Rule<Theme>[] = [
   [
-    /^container$/, (_, { rawSelector, theme }) => {
+    /^container$/,
+    (_, { rawSelector, theme }) => {
       const selector = rawSelector.startsWith('[') ? rawSelector : '.' + rawSelector
 
       const properties: CSSObject = {
