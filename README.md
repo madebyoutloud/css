@@ -59,6 +59,8 @@ This applies to every rule that would otherwise give a rem value: margins, paddi
 
 Theme keys keep preset-mini's values: `text-base` is 16px / 24px, `rounded-lg` 8px, `max-w-md` 448px. Don't use numbers as theme keys, since a number always means px.
 
+A value always follows a dash: `w-16`, `mt-8`, `z-10`, `op-50`. preset-mini's forms without one, such as `w16`, `mt8`, `z10` or `op50`, generate nothing, so classes like `h1` stay free for the project's own CSS.
+
 ## Custom rules
 
 | Class | What it does |

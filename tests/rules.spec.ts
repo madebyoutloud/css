@@ -104,3 +104,27 @@ describe('generateColorVariables', () => {
     expect(css).not.toContain('--color-primary')
   })
 })
+
+describe('values need a dash', () => {
+  const dashless = ['w16', 'h1', 'min-w16', 'max-h16', 'm16', 'mx16', 'mt16', 'm-t16', 'p16', 'px16', 'ps16']
+  const more = ['gap16', 'gap-x16', 'z10', 'op50', 'opacity50', 'bg-op50', 'text-op50', 'font700', 'fw700']
+
+  test.each([...dashless, ...more])('%s generates nothing', async (className) => {
+    expect(await generate(className)).toBe('')
+  })
+
+  test.each([
+    ['w-16', 'width:1rem;'],
+    ['h-1', 'height:0.0625rem;'],
+    ['m-t-16', 'margin-top:1rem;'],
+    ['mt-16', 'margin-top:1rem;'],
+    ['gap-x-16', 'column-gap:1rem;'],
+    ['z-10', 'z-index:10;'],
+    ['op-50', 'opacity:0.5;'],
+    ['bg-op-50', '--un-bg-opacity:0.5;'],
+    ['fw-700', 'font-weight:700;'],
+    ['m-auto', 'margin:auto;'],
+  ])('%s', async (className, expected) => {
+    expect(await declarations(className)).toBe(expected)
+  })
+})
