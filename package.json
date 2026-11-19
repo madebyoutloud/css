@@ -23,18 +23,18 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./helpers": {
-      "types": "./dist/helpers.d.mts",
-      "default": "./dist/helpers.mjs"
+      "types": "./dist/helpers.d.ts",
+      "default": "./dist/helpers.js"
     },
     "./*": "./dist/*"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "migrations"
