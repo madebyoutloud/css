@@ -8,9 +8,9 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@outloud/docs": "^1.0.0",
-    "better-sqlite3": "^12.5.0",
-    "nuxt": "^4.2"
+    "@outloud/docs": "^1.0.5",
+    "better-sqlite3": "^13.2.0",
+    "nuxt": "^4.6.4"
   },
   "devDependencies": {
     "@outloud/css": "workspace:^",
