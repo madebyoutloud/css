@@ -88,24 +88,6 @@ describe('utils', () => {
   })
 })
 
-describe('generateColorVariables', () => {
-  const theme = { colors: { primary: '#ff3712', gray: { 100: '#f5f5f5', 900: '#111' } } }
-
-  test('writes the theme colours as variables', async () => {
-    const css = await generate([], { generateColorVariables: true, preflights: true, theme })
-
-    expect(css).toContain('--color-primary: #ff3712;')
-    expect(css).toContain('--color-gray-100: #f5f5f5;')
-    expect(css).toContain('--color-gray-900: #111;')
-  })
-
-  test('is off by default', async () => {
-    const css = await generate([], { preflights: true, theme })
-
-    expect(css).not.toContain('--color-primary')
-  })
-})
-
 describe('values need a dash', () => {
   const dashless = ['w16', 'h1', 'min-w16', 'max-h16', 'm16', 'mx16', 'mt16', 'm-t16', 'p16', 'px16', 'ps16']
   const more = ['gap16', 'gap-x16', 'z10', 'op50', 'opacity50', 'bg-op50', 'text-op50', 'font700', 'fw700']

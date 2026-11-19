@@ -1,6 +1,7 @@
 import type { DynamicMatcher, Rule } from '@unocss/core'
 import { toRem } from '../helpers.js'
 import type { Theme } from '../theme.js'
+import { collect } from './helpers.js'
 
 // the last `-` segment, such as `16` in `p-16` or `16/24` in `text-16/24`
 const tailRE = /^(.*-)([^-]+)$/
@@ -53,37 +54,6 @@ function rewrite(input: string): string | undefined {
   }
 
   return head + parts.map((part) => (numberRE.test(part) ? `[${toRem(Number(part))}]` : part)).join('/')
-}
-
-// generator rules yield their values, read them once so the result can be checked and returned
-async function collect(result: ReturnType<DynamicMatcher>): Promise<unknown> {
-  const value: unknown = await result
-
-  if (!value || typeof value !== 'object' || Array.isArray(value)) {
-    return value
-  }
-
-  if (Symbol.asyncIterator in value) {
-    return fromAsync(value as AsyncIterable<unknown>)
-  }
-
-  if (Symbol.iterator in value) {
-    return Array.from(value as Iterable<unknown>).filter(Boolean)
-  }
-
-  return value
-}
-
-async function fromAsync(values: AsyncIterable<unknown>): Promise<unknown[]> {
-  const result: unknown[] = []
-
-  for await (const value of values) {
-    if (value) {
-      result.push(value)
-    }
-  }
-
-  return result
 }
 
 function stringify(value: unknown): string {

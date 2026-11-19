@@ -10,6 +10,9 @@ export default defineConfig<Theme>({
   theme: {
     colors: {
       primary: '#ff3712',
+      red: '#ef4444',
+      green: '#22c55e',
+      blue: '#3b82f6',
     },
     flow: {
       maxWidth: 400,

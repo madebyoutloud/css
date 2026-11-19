@@ -1,11 +1,12 @@
 import type { Preset } from '@unocss/core'
 import { presetMini } from '@unocss/preset-mini'
-import { preflights } from './preflights.js'
+import { colorPreflight, extendTheme } from './colors.js'
 import { rules } from './rules/index.js'
 import { theme, type Theme } from './theme.js'
 import type { PresetOutloudOptions } from './types.js'
 
 export type { Theme }
+export { colorVariable, toColorVariables } from './colors.js'
 export type { PresetOutloudOptions }
 
 export function presetOutloud(options: PresetOutloudOptions = {}): Preset<Theme> {
@@ -16,6 +17,7 @@ export function presetOutloud(options: PresetOutloudOptions = {}): Preset<Theme>
     name: '@outloud/css',
     theme,
     rules,
-    preflights: [...(mini.preflights ?? []), ...preflights(options)],
+    extendTheme,
+    preflights: [...(mini.preflights ?? []), colorPreflight(options)],
   }
 }

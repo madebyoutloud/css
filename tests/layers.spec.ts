@@ -6,7 +6,7 @@ import { presetOutloud } from '../src/index.js'
 describe('css layers', () => {
   test('the documented setup puts preflights in reset and utilities in uno', async () => {
     const generator = await createGenerator({
-      presets: [presetOutloud({ generateColorVariables: true })],
+      presets: [presetOutloud()],
       theme: { colors: { primary: '#ff3712' } },
       outputToCssLayers: {
         cssLayerName: (layer) => (layer === 'preflights' ? 'reset' : 'uno'),
@@ -16,7 +16,7 @@ describe('css layers', () => {
 
     expect(css).toMatch(/@layer reset\{\n\*,::before,::after\{--un-rotate:0;/)
     expect(css).toMatch(/@layer uno\{\n\.p-16\{padding:1rem;\}/)
-    expect(css).toMatch(/@layer uno\{\n:root\{[^}]*--color-primary: #ff3712;/)
+    expect(css).toMatch(/@layer reset\{[^@]*:root\{[^}]*--color-primary:#ff3712;/)
   })
 
   test('no layers unless the app asks for them', async () => {

@@ -7,6 +7,7 @@ import {
   sizes,
 } from '@unocss/preset-mini/rules'
 import type { Theme } from '../theme.js'
+import { alpha } from './alpha.js'
 import { container } from './container.js'
 import { requireDash } from './dash.js'
 import { flex } from './flex.js'
@@ -27,7 +28,7 @@ const overrides = new Map<Rule<Theme>[], Rule<Theme>[]>([
   [mini(baseFonts), mini(fonts)],
 ])
 
-export const rules: Rule<Theme>[] = px(requireDash(withOverrides(mini(miniRules))))
+export const rules: Rule<Theme>[] = alpha(px(requireDash(withOverrides(mini(miniRules)))))
 
 function withOverrides(base: Rule<Theme>[]): Rule<Theme>[] {
   const groups = [...overrides.keys()]

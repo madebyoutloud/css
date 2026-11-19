@@ -9,3 +9,4 @@ export function toSize(value: number | string, base?: number): string | number {
 
   return value
 }
+export { colorVariable, toColorVariables } from './colors.js'

@@ -3,6 +3,15 @@ import { type Theme as MiniTheme, theme as miniTheme } from '@unocss/preset-mini
 export const theme: Theme = {
   ...miniTheme,
 
+  // the app brings its own palette, each colour becomes a variable
+  colors: {
+    inherit: 'inherit',
+    current: 'currentColor',
+    transparent: 'transparent',
+    black: '#000',
+    white: '#fff',
+  },
+
   grid: {
     columns: 12,
     gap: 16,

@@ -39,7 +39,7 @@ Import the reset once, before your own styles:
 @import '@outloud/css/reset.css';
 ```
 
-`presetOutloud()` takes [preset-mini's options](https://unocss.dev/presets/mini#options) (`prefix`, `dark`, `variablePrefix`...) plus `generateColorVariables`.
+`presetOutloud()` takes [preset-mini's options](https://unocss.dev/presets/mini#options) (`prefix`, `dark`, `variablePrefix`...) plus `themes`.
 
 ## Numbers are px
 
@@ -90,9 +90,75 @@ export default defineConfig<Theme>({
 })
 ```
 
-## Colour variables
+## Colours
 
-`presetOutloud({ generateColorVariables: true })` writes every theme colour as a variable on `:root`, such as `--color-primary` or `--color-gray-100`.
+Every theme colour is a CSS variable, and the utilities use it. The theme in `uno.config.ts` is the one place colours are defined:
+
+```ts
+// app/theme.ts
+export const theme = {
+  colors: {
+    brand: { 500: '#4bc485', 900: '#0f271b' },
+    primary: { DEFAULT: 'var(--color-brand-500)', text: '#fff' },
+    background: '#fff',
+    text: { DEFAULT: '#171717', secondary: '#404040' },
+  },
+} satisfies Theme
+```
+
+```css
+:root {
+  --color-brand-500: #4bc485;
+  --color-brand-900: #0f271b;
+  --color-primary: var(--color-brand-500);
+  --color-primary-text: #fff;
+  --color-background: #fff;
+  --color-text: #171717;
+  --color-text-secondary: #404040;
+}
+
+.bg-brand-500 { background-color: var(--color-brand-500); }
+.color-text-secondary { color: var(--color-text-secondary); }
+.bg-primary\/50 { background-color: color-mix(in srgb, var(--color-primary) 50%, transparent); }
+```
+
+- A variable is `--color-` and the theme path in kebab-case, without `DEFAULT`: `text.DEFAULT` is `--color-text`, `surface.cardBg` is `--color-surface-card-bg`. `@outloud/ui` reads these names.
+- Opacity works on every theme colour: `bg-primary/50` and `color-text/[0.3]` mix the variable with transparent. The `bg-op-*` and `text-op-*` utilities don't apply to theme colours.
+- Keywords (`transparent`, `currentColor`, `inherit`) stay as they are.
+- preset-mini's palette (`red-500`, `gray-100`...) isn't included, only `black` and `white`. Define the app's own palette, or spread preset-mini's: `import { colors } from '@unocss/preset-mini'`.
+- `theme('colors.brand.500')` in CSS gives `var(--color-brand-500)`. For a literal value, such as the `theme-color` meta tag, import it from the theme file.
+
+### Dark mode and other colour sets
+
+`themes` overrides colours under a selector. A key starting with `@` wraps `:root` in it:
+
+```ts
+presetOutloud({
+  themes: {
+    '.dark': { colors: { background: '#0a0a0a', text: { DEFAULT: '#fafafa' } } },
+    '[data-client="acme"]': { colors: { brand: { 500: '#ff3712' } } },
+    '@media print': { colors: { background: '#fff' } },
+  },
+})
+```
+
+```css
+.dark { --color-background: #0a0a0a; --color-text: #fafafa; }
+[data-client="acme"] { --color-brand-500: #ff3712; }
+@media print { :root { --color-background: #fff; } }
+```
+
+### Runtime theming
+
+To swap colours at runtime, such as an organisation's brand from an API, set the variables. `toColorVariables` gives the names the preset writes:
+
+```ts
+import { toColorVariables } from '@outloud/css/helpers'
+
+for (const [name, value] of Object.entries(toColorVariables(organization.colors))) {
+  document.documentElement.style.setProperty(name, value)
+}
+```
 
 ## CSS layers
 
