@@ -36,7 +36,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "files": [
-    "dist"
+    "dist",
+    "migrations"
   ],
   "engines": {
     "node": ">=22"
