@@ -1,7 +1,7 @@
 {
   "extends": "@outloud/tsconfig/lib.json",
   "compilerOptions": {
-    "lib": ["es2023", "dom"],
+    "lib": ["es2023"],
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "types": ["node"]

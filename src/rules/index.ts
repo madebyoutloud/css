@@ -62,72 +62,75 @@ import { container } from './container.js'
 import { flex } from './flex.js'
 import { flow } from './flow.js'
 import { grids } from './grid.js'
+import { px } from './px.js'
 import { fonts } from './typography.js'
 import { utils } from './utils.js'
 
-export const rules: Rule<Theme>[] = [
-  cssVariables,
-  cssProperty,
-  contains,
-  pointerEvents,
-  appearances,
-  positions,
-  insets,
-  zIndexes,
-  orders,
-  grids, // custom
-  floats,
-  margins,
-  boxSizing,
-  displays,
-  aspectRatio,
-  flow, // custom
-  container, // custom
-  sizes,
-  flex, // custom
-  utils, // custom
-  transforms,
-  cursors,
-  userSelects,
-  resizes,
-  appearance,
-  placements,
-  alignments,
-  justifies,
-  gaps,
-  flexGridJustifiesAlignments,
-  overflows,
-  textOverflows,
-  whitespaces,
-  breaks,
-  borders,
-  bgColors,
-  colorScheme,
-  svgUtilities,
-  paddings,
-  textAligns,
-  textIndents,
-  textWraps,
-  verticalAligns,
-  fonts, // custom
-  textTransforms,
-  fontStyles,
-  textDecorations,
-  fontSmoothings,
-  tabSizes,
-  textStrokes,
-  textShadows,
-  opacity,
-  boxShadows,
-  outline,
-  rings,
-  transitions,
-  willChange,
-  contentVisibility,
-  contents,
-  containerParent,
-  fieldSizing,
+export const rules: Rule<Theme>[] = px(
+  [
+    cssVariables,
+    cssProperty,
+    contains,
+    pointerEvents,
+    appearances,
+    positions,
+    insets,
+    zIndexes,
+    orders,
+    grids, // custom
+    floats,
+    margins,
+    boxSizing,
+    displays,
+    aspectRatio,
+    flow, // custom
+    container, // custom
+    sizes,
+    flex, // custom
+    utils, // custom
+    transforms,
+    cursors,
+    userSelects,
+    resizes,
+    appearance,
+    placements,
+    alignments,
+    justifies,
+    gaps,
+    flexGridJustifiesAlignments,
+    overflows,
+    textOverflows,
+    whitespaces,
+    breaks,
+    borders,
+    bgColors,
+    colorScheme,
+    svgUtilities,
+    paddings,
+    textAligns,
+    textIndents,
+    textWraps,
+    verticalAligns,
+    fonts, // custom
+    textTransforms,
+    fontStyles,
+    textDecorations,
+    fontSmoothings,
+    tabSizes,
+    textStrokes,
+    textShadows,
+    opacity,
+    boxShadows,
+    outline,
+    rings,
+    transitions,
+    willChange,
+    contentVisibility,
+    contents,
+    containerParent,
+    fieldSizing,
 
-  // should be the last
-  questionMark,
-].flat(1) as Rule<Theme>[]
+    // should be the last
+    questionMark,
+  ].flat(1) as Rule<Theme>[],
+)
