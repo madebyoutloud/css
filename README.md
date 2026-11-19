@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://css.byoutloud.com" target="_blank" rel="noopener noreferrer">
-    <img src="https://css.byoutloud.com/images/social.png" alt="Outloud CSS">
+  <a href="https://docs.outloud.dev/css" target="_blank" rel="noopener noreferrer">
+    <img src="https://docs.outloud.dev/css/images/social.png" alt="Outloud CSS">
   </a>
 </p>
 
@@ -14,7 +14,7 @@ UnoCSS preset by Outloud. It builds on [`@unocss/preset-mini`](https://unocss.de
   <a href="https://www.npmjs.com/package/@outloud/css"><img src="https://img.shields.io/npm/l/@outloud/css.svg?sanitize=true" alt="License"></a>
 </p>
 
-Full documentation: [css.byoutloud.com](https://css.byoutloud.com).
+Full documentation: [docs.outloud.dev/css](https://docs.outloud.dev/css).
 
 ## Install
 

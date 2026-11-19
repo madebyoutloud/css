@@ -4,10 +4,15 @@ title: Docs
 
 ::u-page-hero
 ---
-:title: site.name
-:description: package.description
 orientation: horizontal
 ---
+#title
+{{ site.name }}
+
+#description
+{{ package.description }}
+
+#default
 ![@outloud/css](/images/hero.png)
 
 #links
@@ -15,7 +20,7 @@ orientation: horizontal
   ---
   color: neutral
   size: xl
-  to: /getting-started
+  to: /getting-started/installation
   trailing-icon: i-lucide-arrow-right
   ---
   Get started
