@@ -18,7 +18,9 @@
     "outloud",
     "css"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
