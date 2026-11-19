@@ -96,7 +96,7 @@ export default defineConfig<Theme>({
 
 ## CSS layers
 
-The preset sets no layers itself. To put the reset, UnoCSS's preflights and the utilities into layers, declare the order before anything else and import the reset into its layer:
+The preset sets no layers itself, and `reset.css` ships unlayered, so the app decides where it goes. To put the reset, UnoCSS's preflights and the utilities into layers, declare the order before anything else and import the reset into its layer:
 
 ```css
 /* layers.css, loaded first */
