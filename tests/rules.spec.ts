@@ -1,0 +1,106 @@
+import { describe, expect, test } from 'vitest'
+import { declarations, generate } from './generate.js'
+
+describe('flow', () => {
+  test('default theme', async () => {
+    const css = await generate('flow')
+
+    expect(css).toContain('.flow{--un-padding:1rem;--un-max-width:56.25rem;--un-breakout-max-width:75rem;')
+    expect(css).toContain(
+      'grid-template-columns:[full-width-start] minmax(var(--un-padding), 1fr) [breakout-start] minmax(0, var(--un-breakout-size)) [content-start] min(100% - (var(--un-padding) * 2), var(--un-max-width)) [content-end] minmax(0, var(--un-breakout-size)) [breakout-end] minmax(var(--un-padding), 1fr) [full-width-end]',
+    )
+    expect(css).toContain('.flow > *{grid-column:content}')
+    expect(css).toContain('.flow > [data-flow=breakout]{grid-column:breakout}')
+    expect(css).toContain('.flow > [data-flow=full-width]{grid-column:full-width}')
+  })
+
+  test('breakout is at least as wide as the content', async () => {
+    const css = await generate('flow', { theme: { flow: { maxWidth: 800, breakoutMaxWidth: 400, padding: 24 } } })
+
+    expect(css).toContain('--un-padding:1.5rem;--un-max-width:50rem;--un-breakout-max-width:50rem;')
+  })
+})
+
+describe('container', () => {
+  test('default theme', async () => {
+    const css = await generate('container')
+
+    expect(css).toBe(
+      '.container{--un-padding:1rem;--un-max-width:56.25rem;container-type:inline-size;width:100%;max-width:calc(var(--un-max-width) + (var(--un-padding) * 2));padding:var(--un-padding);margin-inline:auto}',
+    )
+  })
+
+  test('sizes', async () => {
+    const css = await generate('container', {
+      theme: { container: { padding: '2rem', maxWidth: { default: 600, sm: 400 } } },
+    })
+
+    expect(css).toContain('.container{--un-padding:2rem;--un-max-width:37.5rem;')
+    expect(css).toContain('.container[data-size=sm]{--un-max-width:25rem}')
+  })
+})
+
+describe('grid', () => {
+  test('columns', async () => {
+    const css = await generate('columns')
+
+    expect(css).toContain('.columns{display:grid;grid-template-columns:repeat(12, minmax(0, 1fr));gap:1rem}')
+    expect(css).toContain('.columns > *{grid-column:span 12 / span 12}')
+  })
+
+  test('columns from the theme', async () => {
+    const css = await generate('columns', { theme: { grid: { columns: 6, gap: 24 } } })
+
+    expect(css).toContain('grid-template-columns:repeat(6, minmax(0, 1fr));gap:1.5rem')
+  })
+
+  test.each([
+    ['col-6', 'grid-column:span 6 / span 6;'],
+    ['offset-2', 'grid-column-start:2;'],
+    ['grid-col-span-2', 'grid-column:span 2/span 2;'],
+    ['grid-cols-3', 'grid-template-columns:repeat(3,minmax(0,1fr));'],
+  ])('%s', async (className, expected) => {
+    expect(await declarations(className)).toBe(expected)
+  })
+})
+
+describe('utils', () => {
+  test('pile', async () => {
+    const css = await generate('pile')
+
+    expect(css).toBe('.pile{display:grid;grid-template-areas:"pile";place-items:center}\n.pile > *{grid-area:pile}')
+  })
+
+  test('prose', async () => {
+    const css = await generate('prose')
+
+    expect(css).toBe('.prose > * + *{--un-gap:1em;margin-block-start:var(--un-gap)}')
+  })
+
+  test.each([
+    ['flex-center', 'display:flex;justify-content:center;align-items:center;'],
+    ['stack', 'display:flex;flex-direction:column;'],
+    ['flex-content', 'flex:0 0 auto;'],
+    ['flex-fill', 'flex:1 0 auto;'],
+  ])('%s', async (className, expected) => {
+    expect(await declarations(className)).toBe(expected)
+  })
+})
+
+describe('generateColorVariables', () => {
+  const theme = { colors: { primary: '#ff3712', gray: { 100: '#f5f5f5', 900: '#111' } } }
+
+  test('writes the theme colours as variables', async () => {
+    const css = await generate([], { generateColorVariables: true, preflights: true, theme })
+
+    expect(css).toContain('--color-primary: #ff3712;')
+    expect(css).toContain('--color-gray-100: #f5f5f5;')
+    expect(css).toContain('--color-gray-900: #111;')
+  })
+
+  test('is off by default', async () => {
+    const css = await generate([], { preflights: true, theme })
+
+    expect(css).not.toContain('--color-primary')
+  })
+})
