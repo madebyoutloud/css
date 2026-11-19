@@ -1,61 +1,10 @@
 import type { Rule } from '@unocss/core'
 import {
-  alignments,
-  appearance,
-  appearances,
-  aspectRatio,
-  bgColors,
-  borders,
-  boxShadows,
-  boxSizing,
-  breaks,
-  colorScheme,
-  containerParent,
-  contains,
-  contents,
-  contentVisibility,
-  cssProperty,
-  cssVariables,
-  cursors,
-  displays,
-  fieldSizing,
-  flexGridJustifiesAlignments,
-  floats,
-  fontSmoothings,
-  fontStyles,
-  gaps,
-  insets,
-  justifies,
-  margins,
-  opacity,
-  orders,
-  outline,
-  overflows,
-  paddings,
-  placements,
-  pointerEvents,
-  positions,
-  questionMark,
-  resizes,
-  rings,
+  flex as baseFlex,
+  fonts as baseFonts,
+  grids as baseGrids,
+  rules as miniRules,
   sizes,
-  svgUtilities,
-  tabSizes,
-  textAligns,
-  textDecorations,
-  textIndents,
-  textOverflows,
-  textShadows,
-  textStrokes,
-  textTransforms,
-  textWraps,
-  transforms,
-  transitions,
-  userSelects,
-  verticalAligns,
-  whitespaces,
-  willChange,
-  zIndexes,
 } from '@unocss/preset-mini/rules'
 import type { Theme } from '../theme.js'
 import { container } from './container.js'
@@ -67,73 +16,39 @@ import { px } from './px.js'
 import { fonts } from './typography.js'
 import { utils } from './utils.js'
 
-export const rules: Rule<Theme>[] = px(
-  requireDash(
-    [
-      cssVariables,
-      cssProperty,
-      contains,
-      pointerEvents,
-      appearances,
-      positions,
-      insets,
-      zIndexes,
-      orders,
-      grids, // custom
-      floats,
-      margins,
-      boxSizing,
-      displays,
-      aspectRatio,
-      flow, // custom
-      container, // custom
-      sizes,
-      flex, // custom
-      utils, // custom
-      transforms,
-      cursors,
-      userSelects,
-      resizes,
-      appearance,
-      placements,
-      alignments,
-      justifies,
-      gaps,
-      flexGridJustifiesAlignments,
-      overflows,
-      textOverflows,
-      whitespaces,
-      breaks,
-      borders,
-      bgColors,
-      colorScheme,
-      svgUtilities,
-      paddings,
-      textAligns,
-      textIndents,
-      textWraps,
-      verticalAligns,
-      fonts, // custom
-      textTransforms,
-      fontStyles,
-      textDecorations,
-      fontSmoothings,
-      tabSizes,
-      textStrokes,
-      textShadows,
-      opacity,
-      boxShadows,
-      outline,
-      rings,
-      transitions,
-      willChange,
-      contentVisibility,
-      contents,
-      containerParent,
-      fieldSizing,
+// preset-mini's rules are typed with its own Theme, ours extends it
+const mini = (group: unknown): Rule<Theme>[] => group as Rule<Theme>[]
 
-      // should be the last
-      questionMark,
-    ].flat(1) as Rule<Theme>[],
-  ),
-)
+// preset-mini's groups that ours replace, in place, so new preset-mini rules arrive on their own
+const overrides = new Map<Rule<Theme>[], Rule<Theme>[]>([
+  [mini(baseGrids), grids],
+  [mini(sizes), [...flow, ...container, ...mini(sizes)]],
+  [mini(baseFlex), [...mini(flex), ...mini(utils)]],
+  [mini(baseFonts), mini(fonts)],
+])
+
+export const rules: Rule<Theme>[] = px(requireDash(withOverrides(mini(miniRules))))
+
+function withOverrides(base: Rule<Theme>[]): Rule<Theme>[] {
+  const groups = [...overrides.keys()]
+  const applied = new Set<Rule<Theme>[]>()
+  const result: Rule<Theme>[] = []
+
+  for (const rule of base) {
+    const group = groups.find((item) => item.includes(rule))
+
+    if (!group) {
+      result.push(rule)
+    } else if (!applied.has(group)) {
+      applied.add(group)
+      result.push(...overrides.get(group)!)
+    }
+  }
+
+  // a group preset-mini renamed or dropped would silently lose our rules
+  if (applied.size !== groups.length) {
+    throw new Error('@outloud/css: preset-mini no longer has a rule group this preset replaces')
+  }
+
+  return result
+}
